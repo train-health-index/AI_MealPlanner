@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Meal Planner</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+</head>
+<body class="bg-gradient-to-r from-orange-100 to-red-100 font-sans min-h-screen">
+    <!-- Navigation -->
+    <nav class="bg-red-600 text-white p-4 flex justify-between items-center fixed w-full top-0 z-20">
+        <h1 class="text-2xl font-bold">🍽️ AI Meal Planner</h1>
+        <div>
+            <span id="userGreeting" class="mr-4"></span>
+            <a href="#" id="loginLink" class="hover:underline">Login</a>
+            <a href="#" id="registerLink" class="hover:underline ml-4">Register</a>
+            <a href="#" id="logoutLink" class="hover:underline ml-4 hidden">Logout</a>
+        </div>
+    </nav>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full">
+            <h2 class="text-2xl font-bold text-red-600 mb-4 text-center">🍴 Welcome Back!</h2>
+            <form id="loginForm" class="space-y-4">
+                <div>
+                    <label for="loginUsername" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="loginUsername" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="loginPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="loginPassword" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <button type="submit" class="w-full bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition duration-300">Login</button>
+                <button type="button" id="closeLogin" class="w-full bg-gray-300 text-gray-700 p-2 rounded-md mt-2 hover:bg-gray-400">Close</button>
+            </form>
+            <p id="loginError" class="mt-2 text-center text-red-600 hidden"></p>
+        </div>
+    </div>
+
+    <!-- Register Modal -->
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-30 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg max-w-md w-full overflow-y-auto max-h-[80vh]">
+            <h2 class="text-2xl font-bold text-red-600 mb-4 text-center">🥗 Create Your Account!</h2>
+            <form id="registerForm" class="space-y-4">
+                <div>
+                    <label for="regUsername" class="block text-sm font-medium text-gray-700">Username</label>
+                    <input type="text" id="regUsername" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="regPassword" class="block text-sm font-medium text-gray-700">Password</label>
+                    <input type="password" id="regPassword" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" required>
+                </div>
+                <div>
+                    <label for="dietPref" class="block text-sm font-medium text-gray-700">Preferred Diet</label>
+                    <select id="dietPref" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="none">None</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                        <option value="keto">Keto</option>
+                        <option value="non-vegetarian">Non-Vegetarian</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="allergies" class="block text-sm font-medium text-gray-700">Allergies (comma-separated)</label>
+                    <input type="text" id="allergies" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., peanuts, shellfish">
+                </div>
+                <div>
+                    <label for="favCuisines" class="block text-sm font-medium text-gray-700">Favorite Cuisines (comma-separated)</label>
+                    <input type="text" id="favCuisines" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., Italian, Mexican">
+                </div>
+                <div>
+                    <label for="mealFreq" class="block text-sm font-medium text-gray-700">Meals Per Day</label>
+                    <input type="number" id="mealFreq" min="1" value="3" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <div>
+                    <label for="calorieGoal" class="block text-sm font-medium text-gray-700">Daily Calorie Goal</label>
+                    <input type="number" id="calorieGoal" min="0" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 2000">
+                </div>
+                <div>
+                    <label for="cookingSkill" class="block text-sm font-medium text-gray-700">Cooking Skill Level</label>
+                    <select id="cookingSkill" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="beginner">Beginner</option>
+                        <option value="intermediate">Intermediate</option>
+                        <option value="advanced">Advanced</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="prepTime" class="block text-sm font-medium text-gray-700">Max Prep Time (minutes)</label>
+                    <input type="number" id="prepTime" min="0" class="mt-1 block w-full p-2 border border-gray-300 rounded-md" placeholder="e.g., 30">
+                </div>
+                <button type="submit" class="w-full bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition duration-300">Register</button>
+                <button type="button" id="closeRegister" class="w-full bg-gray-300 text-gray-700 p-2 rounded-md mt-2 hover:bg-gray-400">Close</button>
+            </form>
+            <p id="registerError" class="mt-2 text-center text-red-600 hidden"></p>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container mx-auto p-6 pt-20">
+        <div class="text-center mb-6">
+            <h2 class="text-3xl font-bold text-red-600 animate-pulse">Plan Your Meals! 🥗🍔</h2>
+            <p class="text-gray-600">Discover delicious meals tailored to your taste!</p>
+        </div>
+        <div id="mealPlanner" class="max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg hidden">
+            <form id="mealForm" class="space-y-4">
+                <div>
+                    <label for="diet" class="block text-sm font-medium text-gray-700">Dietary Preference</label>
+                    <select id="diet" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="none">None</option>
+                        <option value="vegetarian">Vegetarian</option>
+                        <option value="vegan">Vegan</option>
+                        <option value="gluten-free">Gluten-Free</option>
+                        <option value="keto">Keto</option>
+                        <option value="non-vegetarian">Non-Vegetarian</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="cuisine" class="block text-sm font-medium text-gray-700">Cuisine Preference</label>
+                    <select id="cuisine" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="any">Any</option>
+                        <option value="italian">Italian</option>
+                        <option value="mexican">Mexican</option>
+                        <option value="asian">Asian</option>
+                        <option value="indian">Indian</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="mealType" class="block text-sm font-medium text-gray-700">Meal Type</label>
+                    <select id="mealType" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                        <option value="breakfast">Breakfast</option>
+                        <option value="lunch">Lunch</option>
+                        <option value="dinner">Dinner</option>
+                        <option value="snack">Snack</option>
+                    </select>
+                </div>
+                <div>
+                    <label for="servings" class="block text-sm font-medium text-gray-700">Number of Servings</label>
+                    <input type="number" id="servings" min="1" value="1" class="mt-1 block w-full p-2 border border-gray-300 rounded-md">
+                </div>
+                <button type="submit" class="w-full bg-red-600 text-white p-2 rounded-md hover:bg-red-700 transition duration-300">Generate Meal Plan 🍴</button>
+                <button type="button" id="randomMeal" class="w-full bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 transition duration-300 mt-2">Random Meal 🎲</button>
+            </form>
+        </div>
+        <div id="mealPlan" class="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg hidden">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">Your Meal Plan 🥘</h2>
+            <div id="mealOutput" class="space-y-4"></div>
+        </div>
+        <div id="aiFeatures" class="mt-6 max-w-lg mx-auto bg-white p-6 rounded-lg shadow-lg hidden">
+            <h2 class="text-2xl font-semibold text-red-600 mb-4">AI-Powered Features 🤖</h2>
+            <ul id="aiFeaturesList" class="space-y-2"></ul>
+        </div>
+    </div>
+
+    <script>
+        // Load meals.json
+        let mealData = {};
+        fetch('meals.json')
+            .then(response => response.json())
+            .then(data => mealData = data)
+            .catch(error => console.error('Error loading meals.json:', error));
+
+        // Modal controls
+        const loginModal = document.getElementById('loginModal');
+        const registerModal = document.getElementById('registerModal');
+        const loginLink = document.getElementById('loginLink');
+        const registerLink = document.getElementById('registerLink');
+        const closeLogin = document.getElementById('closeLogin');
+        const closeRegister = document.getElementById('closeRegister');
+        const mealPlanner = document.getElementById('mealPlanner');
+
+        loginLink.addEventListener('click', () => {
+            loginModal.classList.remove('hidden');
+            gsap.from(loginModal.querySelector('div'), { opacity: 0, scale: 0.8, duration: 0.5 });
+        });
+        registerLink.addEventListener('click', () => {
+            registerModal.classList.remove('hidden');
+            gsap.from(registerModal.querySelector('div'), { opacity: 0, scale: 0.8, duration: 0.5 });
+        });
+        closeLogin.addEventListener('click', () => loginModal.classList.add('hidden'));
+        closeRegister.addEventListener('click', () => registerModal.classList.add('hidden'));
+
+        // Login form
+        document.getElementById('loginForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('loginUsername').value;
+            const password = document.getElementById('loginPassword').value;
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+
+            if (users[username] && users[username].password === password) {
+                localStorage.setItem('currentUser', username);
+                updateUI();
+                loginModal.classList.add('hidden');
+            } else {
+                const error = document.getElementById('loginError');
+                error.textContent = 'Invalid username or password';
+                error.classList.remove('hidden');
+                gsap.from(error, { opacity: 0, y: 10, duration: 0.5 });
+            }
+        });
+
+        // Register form
+        document.getElementById('registerForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const username = document.getElementById('regUsername').value;
+            const password = document.getElementById('regPassword').value;
+            const dietPref = document.getElementById('dietPref').value;
+            const allergies = document.getElementById('allergies').value;
+            const favCuisines = document.getElementById('favCuisines').value;
+            const mealFreq = document.getElementById('mealFreq').value;
+            const calorieGoal = document.getElementById('calorieGoal').value;
+            const cookingSkill = document.getElementById('cookingSkill').value;
+            const prepTime = document.getElementById('prepTime').value;
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            if (users[username]) {
+                const error = document.getElementById('registerError');
+                error.textContent = 'Username already exists';
+                error.classList.remove('hidden');
+                gsap.from(error, { opacity: 0, y: 10, duration: 0.5 });
+                return;
+            }
+
+            users[username] = {
+                password,
+                preferences: { dietPref, allergies, favCuisines, mealFreq, calorieGoal, cookingSkill, prepTime }
+            };
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('currentUser', username);
+            updateUI();
+            registerModal.classList.add('hidden');
+        });
+
+        // Update UI based on login status
+        function updateUI() {
+            const currentUser = localStorage.getItem('currentUser');
+            const userGreeting = document.getElementById('userGreeting');
+            const logoutLink = document.getElementById('logoutLink');
+            if (currentUser) {
+                const users = JSON.parse(localStorage.getItem('users') || '{}');
+                userGreeting.textContent = `Hello, ${currentUser}! 👋`;
+                loginLink.classList.add('hidden');
+                registerLink.classList.add('hidden');
+                logoutLink.classList.remove('hidden');
+                mealPlanner.classList.remove('hidden');
+                const { dietPref } = users[currentUser].preferences;
+                if (dietPref !== 'none') document.getElementById('diet').value = dietPref;
+                gsap.from(mealPlanner, { opacity: 0, scale: 0.9, duration: 1 });
+            } else {
+                userGreeting.textContent = '';
+                loginLink.classList.remove('hidden');
+                registerLink.classList.remove('hidden');
+                logoutLink.classList.add('hidden');
+                mealPlanner.classList.add('hidden');
+            }
+        }
+
+        // Logout
+        document.getElementById('logoutLink').addEventListener('click', () => {
+            localStorage.removeItem('currentUser');
+            updateUI();
+        });
+
+        // Initial UI setup
+        updateUI();
+
+        // GSAP animations
+        gsap.from('h2', { opacity: 0, y: -20, duration: 1, ease: 'bounce' });
+
+        // AI Features
+        const aiFeatures = [
+            { name: 'Meal Filtering', desc: 'Filters meals by allergies and preferences.', active: true },
+            { name: 'Random Meal Generator', desc: 'Suggests a random meal.', active: true },
+            { name: 'Calorie Estimator', desc: 'Estimates calories (backend required).', active: false },
+            { name: 'Nutrient Breakdown', desc: 'Provides nutrient info (backend required).', active: false },
+            { name: 'Meal Pairing', desc: 'Suggests complementary dishes.', active: true },
+            { name: 'Shopping List', desc: 'Generates ingredient list.', active: true },
+            { name: 'Cooking Time Filter', desc: 'Filters by prep time.', active: true },
+            { name: 'Flavor Profile', desc: 'Matches taste preferences (backend required).', active: false },
+            { name: 'Meal History', desc: 'Tracks selected meals.', active: true },
+            { name: 'Social Sharing', desc: 'Shares meal plans (backend required).', active: false },
+            { name: 'Voice Input', desc: 'Voice commands (backend required).', active: false },
+            { name: 'Image Recognition', desc: 'Identifies ingredients (backend required).', active: false }
+        ];
+
+        const aiFeaturesList = document.getElementById('aiFeaturesList');
+        aiFeatures.forEach(feature => {
+            const li = document.createElement('li');
+            li.innerHTML = `<span class="font-bold">${feature.name}:</span> ${feature.desc} ${feature.active ? '✅' : '🔜'}`;
+            aiFeaturesList.appendChild(li);
+        });
+        document.getElementById('aiFeatures').classList.remove('hidden');
+        gsap.from('#aiFeatures', { opacity: 0, y: 20, duration: 1, delay: 1 });
+
+        // Meal form submission
+        document.getElementById('mealForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const diet = document.getElementById('diet').value;
+            const cuisine = document.getElementById('cuisine').value;
+            const mealType = document.getElementById('mealType').value;
+            const servings = document.getElementById('servings').value;
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const currentUser = localStorage.getItem('currentUser');
+            const allergies = users[currentUser]?.preferences.allergies.split(',').map(a => a.trim().toLowerCase()) || [];
+            let meals = mealData[diet]?.[cuisine]?.[mealType] || [];
+            meals = meals.filter(meal => !allergies.some(allergy => meal.toLowerCase().includes(allergy)));
+
+            const mealOutput = document.getElementById('mealOutput');
+            mealOutput.innerHTML = `
+                <p><strong>Diet:</strong> ${diet.charAt(0).toUpperCase() + diet.slice(1)}</p>
+                <p><strong>Cuisine:</strong> ${cuisine.charAt(0).toUpperCase() + cuisine.slice(1)}</p>
+                <p><strong>Meal Type:</strong> ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</p>
+                <p><strong>Servings:</strong> ${servings}</p>
+                <p><strong>Meal Suggestions:</strong></p>
+                <ul class="list-disc pl-5">
+                    ${meals.map(meal => `<li>${meal.replace('{servings}', servings)}</li>`).join('')}
+                </ul>
+                <p><strong>Shopping List:</strong> ${meals.map(m => m.split(':')[0]).join(', ')}</p>
+            `;
+            document.getElementById('mealPlan').classList.remove('hidden');
+            gsap.from('#mealPlan', { opacity: 0, y: 20, duration: 1 });
+
+            // Save to meal history
+            if (meals.length) {
+                const history = JSON.parse(localStorage.getItem('mealHistory') || '[]');
+                history.push({ diet, cuisine, mealType, servings, meals, timestamp: new Date().toISOString() });
+                localStorage.setItem('mealHistory', JSON.stringify(history));
+            }
+        });
+
+        // Random meal generator
+        document.getElementById('randomMeal').addEventListener('click', () => {
+            const diets = Object.keys(mealData);
+            const diet = diets[Math.floor(Math.random() * diets.length)];
+            const cuisines = Object.keys(mealData[diet]);
+            const cuisine = cuisines[Math.floor(Math.random() * cuisines.length)];
+            const mealTypes = Object.keys(mealData[diet][cuisine]);
+            const mealType = mealTypes[Math.floor(Math.random() * mealTypes.length)];
+            const servings = Math.floor(Math.random() * 4) + 1;
+
+            document.getElementById('diet').value = diet;
+            document.getElementById('cuisine').value = cuisine;
+            document.getElementById('mealType').value = mealType;
+            document.getElementById('servings').value = servings;
+            document.getElementById('mealForm').dispatchEvent(new Event('submit'));
+        });
+    </script>
+</body>
+</html>
