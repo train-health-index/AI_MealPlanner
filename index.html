@@ -181,14 +181,14 @@
             .then(response => response.json())
             .then(data => {
                 mealData = data;
-                updateCuisineOptions(); // Update cuisine options based on mealData
+                updateCuisineOptions();
             })
             .catch(error => console.error('Error loading meals.json:', error));
 
         // Update cuisine options dynamically
         function updateCuisineOptions() {
             const cuisineSelect = document.getElementById('cuisine');
-            const cuisines = Object.keys(mealData[Object.keys(mealData)[0]]);
+            const cuisines = Object.keys(mealData[Object.keys(mealData)[0]] || {});
             cuisineSelect.innerHTML = cuisines.map(c => `<option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>`).join('');
         }
 
@@ -392,7 +392,6 @@
 
         // AI Feature Functions
         function estimateCalories(meal) {
-            // Mock calorie estimation (replace with Nutritionix API in backend)
             const calories = Math.floor(Math.random() * 500 + 300);
             alert(`Estimated calories for ${meal}: ${calories} kcal`);
             return calories;
@@ -400,12 +399,11 @@
 
         function generateShoppingList() {
             const mealOutput = document.getElementById('mealOutput');
-            const meals = mealOutput.querySelectorAll('li');
+            const meals = mealOutput.querySelectorAll('.food-card');
             if (!meals.length) return alert('Generate a meal plan first!');
             let ingredients = [];
             meals.forEach(meal => {
-                const text = meal.textContent;
-                const ing = text.match(/Ingredients: ([^.]+\.)/)?.[1] || '';
+                const ing = meal.querySelector('.ingredients').textContent.replace('Ingredients: ', '');
                 ingredients.push(ing);
             });
             alert(`Shopping List:\n${ingredients.join('\n')}`);
@@ -419,28 +417,29 @@
         }
 
         function logNutrients(meal) {
-            // Mock nutrient logging
             const nutrients = { protein: 20, carbs: 30, fats: 15 };
             alert(`Nutrients for ${meal}:\nProtein: ${nutrients.protein}g\nCarbs: ${nutrients.carbs}g\nFats: ${nutrients.fats}g`);
         }
 
         function suggestPairing() {
             const mealOutput = document.getElementById('mealOutput');
-            const meals = mealOutput.querySelectorAll('li');
+            const meals = mealOutput.querySelectorAll('.food-card');
             if (!meals.length) return alert('Generate a meal plan first!');
-            const mainMeal = meals[0].textContent.split(':')[0];
+            const mainMeal = meals[0].querySelector('h3').textContent;
             const pairing = mealData['none']['any']['appetizer'].template
                 .replace('{protein}', 'cheese')
                 .replace('{vegetable}', 'tomatoes')
                 .replace('{side}', 'bread')
                 .replace('{seasoning}', 'basil')
-                .replace('{servings}', 1);
+                .replace('{servings}', '1');
             alert(`Pair ${mainMeal} with: ${pairing}`);
         }
 
         function downloadMealPlan() {
             const mealOutput = document.getElementById('mealOutput');
-            const text = mealOutput.textContent;
+            const text = Array.from(mealOutput.querySelectorAll('.food-card')).map(card => {
+                return `${card.querySelector('h3').textContent}\n${card.querySelector('.ingredients').textContent}\n${card.querySelector('.instructions').textContent}\n${card.querySelector('.calories').textContent}`;
+            }).join('\n\n');
             if (!text) return alert('Generate a meal plan first!');
             const blob = new Blob([text], { type: 'text/plain' });
             const url = URL.createObjectURL(blob);
@@ -460,35 +459,40 @@
             const servings = parseInt(document.getElementById('servings').value);
 
             const users = JSON.parse(localStorage.getItem('users') || '{}');
-            const currentUser = JSON.parse(localStorage.getItem('currentUser') || '{}');
+            const currentUser = localStorage.getItem('currentUser');
             const allergies = users[currentUser]?.preferences.allergies?.split(',').map(a => a.trim().toLowerCase()) || [];
+
             // Generate meals from template
             const mealTemplate = mealData[diet]?.[cuisine]?.[mealType] || {};
             let meals = [];
             if (mealTemplate) {
                 const { template, ingredients, proteins, vegetables, seasoning, sides } = mealTemplate;
-                // Generate 6 unique meals
                 const combinations = [];
                 for (let i = 0; i < 6 && i < proteins.length * vegetables.length * sides.length; i++) {
                     const protein = proteins[Math.floor(Math.random() * proteins.length)];
                     const vegetable = vegetables[Math.floor(Math.random() * vegetables.length)];
                     const side = sides[Math.floor(Math.random() * sides.length)];
                     const mealName = `${protein.charAt(0).toUpperCase() + protein.slice(1)} ${vegetable.charAt(0).toUpperCase() + vegetable.slice(1)} ${cuisine.charAt(0).toUpperCase()} ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}`;
-                    const mealDesc = ingredients.map(ing => ing.replace('{protein}', protein).replace('{vegetable}', vegetable).replace('{side}', side).replace('{seasoning}', seasoning)).join(', ');
-                    const mealInstructions = template.replace('{protein}', protein).replace('{vegetable}', vegetable).replace('{side}', side).replace('{seasoning}', seasoning).replace('{servings}', servings));
-                    if (!combinations.includes(mealInstructions) && !allergies.some(allergy => mealDesc.toLowerCase().includes(allergy) || mealInstructions.toLowerCase().includes(allergy))) {
+                    const mealIngredients = ingredients.map(ing => ing.replace('{protein}', protein).replace('{vegetable}', vegetable).replace('{side}', side).replace('{seasoning}', seasoning)).join(', ');
+                    const mealInstructions = template
+                        .replace('{protein}', protein)
+                        .replace('{vegetable}', vegetable)
+                        .replace('{side}', side)
+                        .replace('{seasoning}', seasoning)
+                        .replace('{servings}', servings);
+                    if (!combinations.includes(mealInstructions) && !allergies.some(allergy => mealIngredients.toLowerCase().includes(allergy) || mealInstructions.toLowerCase().includes(allergy))) {
                         combinations.push(mealInstructions);
-                        meals.push({ name: mealName, ingredients: mealDesc, instructions: mealInstructions });
+                        meals.push({ name: mealName, ingredients: mealIngredients, instructions: mealInstructions });
                     }
                 }
-            });
+            }
 
-            const mealOutput = document.getElementsById('mealOutput');
+            const mealOutput = document.getElementById('mealOutput');
             mealOutput.innerHTML = `
                 <div class="bg-orange-100 p-6 rounded-2xl mb-6">
                     <p class="font-semibold"><span class="text-red-600">Diet:</span> ${diet.charAt(0).toUpperCase() + diet.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Cuisine:</span> ${cuisine.charAt(0).toUpperCase() + cuisine.slice(1)}</p>
-                    <p class="font-semibold"><span class="text-red-600">Meal:</span> ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</p>
+                    <p class="font-semibold"><span class="text-red-600">Meal Type:</span> ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Servings:</span> ${servings}</p>
                 </div>
             `;
@@ -497,17 +501,17 @@
                 mealCard.className = 'food-card bg-white p-6 rounded-2xl shadow-lg';
                 mealCard.innerHTML = `
                     <h3 class="text-xl font-bold text-red-600 mb-4">${meal.name} 🍲</h3>
-                    <p class="text-gray-700 mb-2"><strong>Ingredients:</strong> ${meal.ings}</p>
-                    <p class="text-gray-700"><strong>Instructions:</strong> ${meal.instructions}</p>
-                    <p class="text-gray-600 text-sm-2 mt-4">Estimated Calories: ${estimateCalories(meal.name)} kcal</p>
+                    <p class="text-gray-700 mb-2 ingredients"><strong>Ingredients:</strong> ${meal.ingredients}</p>
+                    <p class="text-gray-700 instructions"><strong>Instructions:</strong> ${meal.instructions}</p>
+                    <p class="text-gray-600 text-sm mt-4 calories">Estimated Calories: ${estimateCalories(meal.name)} kcal</p>
                 `;
                 mealOutput.appendChild(mealCard);
             });
-            document.getElementsById('mealPlan').classList.remove('hidden');
-            gsap.from('#mealPlan .food-card', { opacity: 0, y: '50', duration: 0.5, stagger: 0.2, ease: 'power2.out' });
+            document.getElementById('mealPlan').classList.remove('hidden');
+            gsap.from('#mealPlan .food-card', { opacity: 0, y: 50, duration: 0.5, stagger: 0.2, ease: 'power2.out' });
 
             // Save to meal history
-            if (meals.length > 0) {
+            if (meals.length) {
                 const history = JSON.parse(localStorage.getItem('mealHistory') || '[]');
                 history.push({ diet, cuisine, mealType, servings, meals, timestamp: new Date().toLocaleString() });
                 localStorage.setItem('mealHistory', JSON.stringify(history));
@@ -515,7 +519,7 @@
         });
 
         // Random meal generator
-        document.getElementsById('randomMeal').addEventListener('click', () => {
+        document.getElementById('randomMeal').addEventListener('click', () => {
             const diets = Object.keys(mealData);
             const diet = diets[Math.floor(Math.random() * diets.length)];
             const cuisines = Object.keys(mealData[diet]);
@@ -524,11 +528,11 @@
             const mealType = mealTypes[Math.floor(Math.random() * mealTypes.length)];
             const servings = Math.floor(Math.random() * 4) + 1;
 
-            document.getElementsById('diet').value = diet;
-            document.getElementsById('cuisine').value = cuisine;
-            document.getElementsById('mealType').value = mealType;
-            document.getElementsById('servings').value = servings;
-            document.getElementsById('mealForm').dispatchEvent(new Event('submit'));
+            document.getElementById('diet').value = diet;
+            document.getElementById('cuisine').value = cuisine;
+            document.getElementById('mealType').value = mealType;
+            document.getElementById('servings').value = servings;
+            document.getElementById('mealForm').dispatchEvent(new Event('submit'));
         });
     </script>
 </body>
