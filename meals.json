@@ -1,0 +1,1034 @@
+{
+  "none": {
+    "any": {
+      "breakfast": [
+        "Classic Pancakes: Fluffy pancakes with maple syrup for {servings} servings.",
+        "Scrambled Eggs: Eggs with toast for {servings} servings.",
+        "Fruit Smoothie: Blended fruits with yogurt for {servings} servings.",
+        "Oatmeal Bowl: Oats with berries for {servings} servings.",
+        "Breakfast Burrito: Eggs and sausage wrap for {servings} servings.",
+        "Waffles: Crispy waffles with whipped cream for {servings} servings."
+      ],
+      "lunch": [
+        "Chicken Caesar Salad: Romaine with grilled chicken for {servings} servings.",
+        "Turkey Sandwich: Turkey with lettuce on bread for {servings} servings.",
+        "Pasta Salad: Pasta with veggies for {servings} servings.",
+        "Tuna Wrap: Tuna with avocado for {servings} servings.",
+        "BLT Sandwich: Bacon, lettuce, tomato for {servings} servings.",
+        "Grilled Cheese: Melted cheese sandwich for {servings} servings."
+      ],
+      "dinner": [
+        "Beef Stir-Fry: Beef with vegetables for {servings} servings.",
+        "Grilled Salmon: Salmon with asparagus for {servings} servings.",
+        "Chicken Alfredo: Pasta with creamy sauce for {servings} servings.",
+        "Pork Chops: Grilled pork with potatoes for {servings} servings.",
+        "Shrimp Fried Rice: Shrimp with rice for {servings} servings.",
+        "Lasagna: Layered pasta with meat sauce for {servings} servings."
+      ],
+      "snack": [
+        "Cheese and Crackers: Assorted cheeses for {servings} servings.",
+        "Yogurt Parfait: Yogurt with granola for {servings} servings.",
+        "Mixed Nuts: Assorted nuts for {servings} servings.",
+        "Fruit Skewers: Fresh fruit on sticks for {servings} servings.",
+        "Popcorn: Butter popcorn for {servings} servings.",
+        "Pretzels: Salty pretzels for {servings} servings."
+      ]
+    },
+    "italian": {
+      "breakfast": [
+        "Italian Frittata: Eggs with tomatoes for {servings} servings.",
+        "Croissant: Buttery croissant for {servings} servings.",
+        "Espresso Oatmeal: Oats with coffee flavor for {servings} servings.",
+        "Ricotta Toast: Toast with ricotta for {servings} servings.",
+        "Pancetta Scramble: Eggs with pancetta for {servings} servings.",
+        "Tiramisu Smoothie: Coffee-flavored smoothie for {servings} servings."
+      ],
+      "lunch": [
+        "Margherita Pizza: Pizza with mozzarella for {servings} servings.",
+        "Pesto Pasta: Pasta with pesto sauce for {servings} servings.",
+        "Prosciutto Panini: Ham sandwich for {servings} servings.",
+        "Minestrone Soup: Vegetable soup for {servings} servings.",
+        "Caprese Salad: Tomatoes and mozzarella for {servings} servings.",
+        "Italian Sub: Sub with salami for {servings} servings."
+      ],
+      "dinner": [
+        "Spaghetti Bolognese: Pasta with meat sauce for {servings} servings.",
+        "Chicken Parmesan: Breaded chicken for {servings} servings.",
+        "Risotto: Creamy rice dish for {servings} servings.",
+        "Osso Buco: Braised veal for {servings} servings.",
+        "Seafood Linguine: Pasta with seafood for {servings} servings.",
+        "Eggplant Rollatini: Eggplant rolls for {servings} servings."
+      ],
+      "snack": [
+        "Bruschetta: Tomato on toast for {servings} servings.",
+        "Mozzarella Sticks: Fried cheese for {servings} servings.",
+        "Olives: Marinated olives for {servings} servings.",
+        "Focaccia: Herbed bread for {servings} servings.",
+        "Prosciutto Wraps: Melon wrapped in ham for {servings} servings.",
+        "Parmesan Crisps: Baked cheese for {servings} servings."
+      ]
+    },
+    "mexican": {
+      "breakfast": [
+        "Generic none mexican Breakfast: Dish 1 for {servings} servings.",
+        "Generic none mexican Breakfast: Dish 2 for {servings} servings.",
+        "Generic none mexican Breakfast: Dish 3 for {servings} servings.",
+        "Generic none mexican Breakfast: Dish 4 for {servings} servings.",
+        "Generic none mexican Breakfast: Dish 5 for {servings} servings.",
+        "Generic none mexican Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic none mexican Lunch: Dish 1 for {servings} servings.",
+        "Generic none mexican Lunch: Dish 2 for {servings} servings.",
+        "Generic none mexican Lunch: Dish 3 for {servings} servings.",
+        "Generic none mexican Lunch: Dish 4 for {servings} servings.",
+        "Generic none mexican Lunch: Dish 5 for {servings} servings.",
+        "Generic none mexican Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic none mexican Dinner: Dish 1 for {servings} servings.",
+        "Generic none mexican Dinner: Dish 2 for {servings} servings.",
+        "Generic none mexican Dinner: Dish 3 for {servings} servings.",
+        "Generic none mexican Dinner: Dish 4 for {servings} servings.",
+        "Generic none mexican Dinner: Dish 5 for {servings} servings.",
+        "Generic none mexican Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic none mexican Snack: Dish 1 for {servings} servings.",
+        "Generic none mexican Snack: Dish 2 for {servings} servings.",
+        "Generic none mexican Snack: Dish 3 for {servings} servings.",
+        "Generic none mexican Snack: Dish 4 for {servings} servings.",
+        "Generic none mexican Snack: Dish 5 for {servings} servings.",
+        "Generic none mexican Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "asian": {
+      "breakfast": [
+        "Generic none asian Breakfast: Dish 1 for {servings} servings.",
+        "Generic none asian Breakfast: Dish 2 for {servings} servings.",
+        "Generic none asian Breakfast: Dish 3 for {servings} servings.",
+        "Generic none asian Breakfast: Dish 4 for {servings} servings.",
+        "Generic none asian Breakfast: Dish 5 for {servings} servings.",
+        "Generic none asian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic none asian Lunch: Dish 1 for {servings} servings.",
+        "Generic none asian Lunch: Dish 2 for {servings} servings.",
+        "Generic none asian Lunch: Dish 3 for {servings} servings.",
+        "Generic none asian Lunch: Dish 4 for {servings} servings.",
+        "Generic none asian Lunch: Dish 5 for {servings} servings.",
+        "Generic none asian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic none asian Dinner: Dish 1 for {servings} servings.",
+        "Generic none asian Dinner: Dish 2 for {servings} servings.",
+        "Generic none asian Dinner: Dish 3 for {servings} servings.",
+        "Generic none asian Dinner: Dish 4 for {servings} servings.",
+        "Generic none asian Dinner: Dish 5 for {servings} servings.",
+        "Generic none asian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic none asian Snack: Dish 1 for {servings} servings.",
+        "Generic none asian Snack: Dish 2 for {servings} servings.",
+        "Generic none asian Snack: Dish 3 for {servings} servings.",
+        "Generic none asian Snack: Dish 4 for {servings} servings.",
+        "Generic none asian Snack: Dish 5 for {servings} servings.",
+        "Generic none asian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "indian": {
+      "breakfast": [
+        "Generic none indian Breakfast: Dish 1 for {servings} servings.",
+        "Generic none indian Breakfast: Dish 2 for {servings} servings.",
+        "Generic none indian Breakfast: Dish 3 for {servings} servings.",
+        "Generic none indian Breakfast: Dish 4 for {servings} servings.",
+        "Generic none indian Breakfast: Dish 5 for {servings} servings.",
+        "Generic none indian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic none indian Lunch: Dish 1 for {servings} servings.",
+        "Generic none indian Lunch: Dish 2 for {servings} servings.",
+        "Generic none indian Lunch: Dish 3 for {servings} servings.",
+        "Generic none indian Lunch: Dish 4 for {servings} servings.",
+        "Generic none indian Lunch: Dish 5 for {servings} servings.",
+        "Generic none indian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic none indian Dinner: Dish 1 for {servings} servings.",
+        "Generic none indian Dinner: Dish 2 for {servings} servings.",
+        "Generic none indian Dinner: Dish 3 for {servings} servings.",
+        "Generic none indian Dinner: Dish 4 for {servings} servings.",
+        "Generic none indian Dinner: Dish 5 for {servings} servings.",
+        "Generic none indian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic none indian Snack: Dish 1 for {servings} servings.",
+        "Generic none indian Snack: Dish 2 for {servings} servings.",
+        "Generic none indian Snack: Dish 3 for {servings} servings.",
+        "Generic none indian Snack: Dish 4 for {servings} servings.",
+        "Generic none indian Snack: Dish 5 for {servings} servings.",
+        "Generic none indian Snack: Dish 6 for {servings} servings."
+      ]
+    }
+  },
+  "vegetarian": {
+    "any": {
+      "breakfast": [
+        "Avocado Toast: Toast with avocado for {servings} servings.",
+        "Veggie Omelette: Eggs with peppers for {servings} servings.",
+        "Chia Pudding: Chia with fruit for {servings} servings.",
+        "Greek Yogurt Bowl: Yogurt with nuts for {servings} servings.",
+        "Banana Pancakes: Pancakes with banana for {servings} servings.",
+        "Smoothie Bowl: Blended fruit bowl for {servings} servings."
+      ],
+      "lunch": [
+        "Veggie Wrap: Tortilla with vegetables for {servings} servings.",
+        "Quinoa Salad: Quinoa with veggies for {servings} servings.",
+        "Lentil Soup: Hearty lentil soup for {servings} servings.",
+        "Falafel Pita: Pita with falafel for {servings} servings.",
+        "Caprese Sandwich: Mozzarella sandwich for {servings} servings.",
+        "Hummus Plate: Hummus with veggies for {servings} servings."
+      ],
+      "dinner": [
+        "Vegetable Stir-Fry: Veggies in sauce for {servings} servings.",
+        "Stuffed Peppers: Peppers with rice for {servings} servings.",
+        "Mushroom Risotto: Creamy mushroom rice for {servings} servings.",
+        "Eggplant Curry: Spiced eggplant for {servings} servings.",
+        "Spinach Lasagna: Layered pasta for {servings} servings.",
+        "Veggie Burger: Patty with bun for {servings} servings."
+      ],
+      "snack": [
+        "Hummus with Veggies: Dip with vegetables for {servings} servings.",
+        "Cheese Cubes: Assorted cheeses for {servings} servings.",
+        "Veggie Sticks: Carrots and celery for {servings} servings.",
+        "Rice Cakes: Topped with avocado for {servings} servings.",
+        "Trail Mix: Nuts and dried fruit for {servings} servings.",
+        "Yogurt Dip: Dip with fruit for {servings} servings."
+      ]
+    },
+    "italian": {
+      "breakfast": [
+        "Generic vegetarian italian Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegetarian italian Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegetarian italian Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegetarian italian Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegetarian italian Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegetarian italian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegetarian italian Lunch: Dish 1 for {servings} servings.",
+        "Generic vegetarian italian Lunch: Dish 2 for {servings} servings.",
+        "Generic vegetarian italian Lunch: Dish 3 for {servings} servings.",
+        "Generic vegetarian italian Lunch: Dish 4 for {servings} servings.",
+        "Generic vegetarian italian Lunch: Dish 5 for {servings} servings.",
+        "Generic vegetarian italian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegetarian italian Dinner: Dish 1 for {servings} servings.",
+        "Generic vegetarian italian Dinner: Dish 2 for {servings} servings.",
+        "Generic vegetarian italian Dinner: Dish 3 for {servings} servings.",
+        "Generic vegetarian italian Dinner: Dish 4 for {servings} servings.",
+        "Generic vegetarian italian Dinner: Dish 5 for {servings} servings.",
+        "Generic vegetarian italian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegetarian italian Snack: Dish 1 for {servings} servings.",
+        "Generic vegetarian italian Snack: Dish 2 for {servings} servings.",
+        "Generic vegetarian italian Snack: Dish 3 for {servings} servings.",
+        "Generic vegetarian italian Snack: Dish 4 for {servings} servings.",
+        "Generic vegetarian italian Snack: Dish 5 for {servings} servings.",
+        "Generic vegetarian italian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "mexican": {
+      "breakfast": [
+        "Generic vegetarian mexican Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegetarian mexican Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegetarian mexican Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegetarian mexican Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegetarian mexican Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegetarian mexican Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegetarian mexican Lunch: Dish 1 for {servings} servings.",
+        "Generic vegetarian mexican Lunch: Dish 2 for {servings} servings.",
+        "Generic vegetarian mexican Lunch: Dish 3 for {servings} servings.",
+        "Generic vegetarian mexican Lunch: Dish 4 for {servings} servings.",
+        "Generic vegetarian mexican Lunch: Dish 5 for {servings} servings.",
+        "Generic vegetarian mexican Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegetarian mexican Dinner: Dish 1 for {servings} servings.",
+        "Generic vegetarian mexican Dinner: Dish 2 for {servings} servings.",
+        "Generic vegetarian mexican Dinner: Dish 3 for {servings} servings.",
+        "Generic vegetarian mexican Dinner: Dish 4 for {servings} servings.",
+        "Generic vegetarian mexican Dinner: Dish 5 for {servings} servings.",
+        "Generic vegetarian mexican Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegetarian mexican Snack: Dish 1 for {servings} servings.",
+        "Generic vegetarian mexican Snack: Dish 2 for {servings} servings.",
+        "Generic vegetarian mexican Snack: Dish 3 for {servings} servings.",
+        "Generic vegetarian mexican Snack: Dish 4 for {servings} servings.",
+        "Generic vegetarian mexican Snack: Dish 5 for {servings} servings.",
+        "Generic vegetarian mexican Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "asian": {
+      "breakfast": [
+        "Generic vegetarian asian Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegetarian asian Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegetarian asian Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegetarian asian Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegetarian asian Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegetarian asian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegetarian asian Lunch: Dish 1 for {servings} servings.",
+        "Generic vegetarian asian Lunch: Dish 2 for {servings} servings.",
+        "Generic vegetarian asian Lunch: Dish 3 for {servings} servings.",
+        "Generic vegetarian asian Lunch: Dish 4 for {servings} servings.",
+        "Generic vegetarian asian Lunch: Dish 5 for {servings} servings.",
+        "Generic vegetarian asian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegetarian asian Dinner: Dish 1 for {servings} servings.",
+        "Generic vegetarian asian Dinner: Dish 2 for {servings} servings.",
+        "Generic vegetarian asian Dinner: Dish 3 for {servings} servings.",
+        "Generic vegetarian asian Dinner: Dish 4 for {servings} servings.",
+        "Generic vegetarian asian Dinner: Dish 5 for {servings} servings.",
+        "Generic vegetarian asian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegetarian asian Snack: Dish 1 for {servings} servings.",
+        "Generic vegetarian asian Snack: Dish 2 for {servings} servings.",
+        "Generic vegetarian asian Snack: Dish 3 for {servings} servings.",
+        "Generic vegetarian asian Snack: Dish 4 for {servings} servings.",
+        "Generic vegetarian asian Snack: Dish 5 for {servings} servings.",
+        "Generic vegetarian asian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "indian": {
+      "breakfast": [
+        "Generic vegetarian indian Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegetarian indian Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegetarian indian Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegetarian indian Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegetarian indian Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegetarian indian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegetarian indian Lunch: Dish 1 for {servings} servings.",
+        "Generic vegetarian indian Lunch: Dish 2 for {servings} servings.",
+        "Generic vegetarian indian Lunch: Dish 3 for {servings} servings.",
+        "Generic vegetarian indian Lunch: Dish 4 for {servings} servings.",
+        "Generic vegetarian indian Lunch: Dish 5 for {servings} servings.",
+        "Generic vegetarian indian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegetarian indian Dinner: Dish 1 for {servings} servings.",
+        "Generic vegetarian indian Dinner: Dish 2 for {servings} servings.",
+        "Generic vegetarian indian Dinner: Dish 3 for {servings} servings.",
+        "Generic vegetarian indian Dinner: Dish 4 for {servings} servings.",
+        "Generic vegetarian indian Dinner: Dish 5 for {servings} servings.",
+        "Generic vegetarian indian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegetarian indian Snack: Dish 1 for {servings} servings.",
+        "Generic vegetarian indian Snack: Dish 2 for {servings} servings.",
+        "Generic vegetarian indian Snack: Dish 3 for {servings} servings.",
+        "Generic vegetarian indian Snack: Dish 4 for {servings} servings.",
+        "Generic vegetarian indian Snack: Dish 5 for {servings} servings.",
+        "Generic vegetarian indian Snack: Dish 6 for {servings} servings."
+      ]
+    }
+  },
+  "vegan": {
+    "any": {
+      "breakfast": [
+        "Vegan Pancakes: Pancakes with fruit for {servings} servings.",
+        "Tofu Scramble: Spiced tofu for {servings} servings.",
+        "Oatmeal: Oats with almond milk for {servings} servings.",
+        "Smoothie: Fruit and spinach blend for {servings} servings.",
+        "Chia Pudding: Chia with berries for {servings} servings.",
+        "Vegan Muffins: Blueberry muffins for {servings} servings."
+      ],
+      "lunch": [
+        "Vegan Buddha Bowl: Grains and veggies for {servings} servings.",
+        "Vegan Wrap: Hummus and veggies for {servings} servings.",
+        "Lentil Salad: Lentils with greens for {servings} servings.",
+        "Vegan Sushi: Avocado rolls for {servings} servings.",
+        "Chickpea Salad: Chickpeas with herbs for {servings} servings.",
+        "Vegan Soup: Tomato soup for {servings} servings."
+      ],
+      "dinner": [
+        "Vegan Curry: Coconut curry for {servings} servings.",
+        "Vegan Stir-Fry: Tofu with veggies for {servings} servings.",
+        "Vegan Pasta: Pasta with marinara for {servings} servings.",
+        "Vegan Chili: Beans and spices for {servings} servings.",
+        "Vegan Tacos: Lentil tacos for {servings} servings.",
+        "Vegan Pizza: Pizza with veggies for {servings} servings."
+      ],
+      "snack": [
+        "Fruit Salad: Mixed fruits for {servings} servings.",
+        "Vegan Chips: Kale chips for {servings} servings.",
+        "Nut Butter: Apple slices with nut butter for {servings} servings.",
+        "Vegan Popcorn: Popcorn with spices for {servings} servings.",
+        "Vegan Energy Balls: Nuts and dates for {servings} servings.",
+        "Seaweed Snacks: Crispy seaweed for {servings} servings."
+      ]
+    },
+    "italian": {
+      "breakfast": [
+        "Generic vegan italian Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegan italian Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegan italian Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegan italian Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegan italian Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegan italian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegan italian Lunch: Dish 1 for {servings} servings.",
+        "Generic vegan italian Lunch: Dish 2 for {servings} servings.",
+        "Generic vegan italian Lunch: Dish 3 for {servings} servings.",
+        "Generic vegan italian Lunch: Dish 4 for {servings} servings.",
+        "Generic vegan italian Lunch: Dish 5 for {servings} servings.",
+        "Generic vegan italian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegan italian Dinner: Dish 1 for {servings} servings.",
+        "Generic vegan italian Dinner: Dish 2 for {servings} servings.",
+        "Generic vegan italian Dinner: Dish 3 for {servings} servings.",
+        "Generic vegan italian Dinner: Dish 4 for {servings} servings.",
+        "Generic vegan italian Dinner: Dish 5 for {servings} servings.",
+        "Generic vegan italian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegan italian Snack: Dish 1 for {servings} servings.",
+        "Generic vegan italian Snack: Dish 2 for {servings} servings.",
+        "Generic vegan italian Snack: Dish 3 for {servings} servings.",
+        "Generic vegan italian Snack: Dish 4 for {servings} servings.",
+        "Generic vegan italian Snack: Dish 5 for {servings} servings.",
+        "Generic vegan italian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "mexican": {
+      "breakfast": [
+        "Generic vegan mexican Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegan mexican Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegan mexican Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegan mexican Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegan mexican Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegan mexican Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegan mexican Lunch: Dish 1 for {servings} servings.",
+        "Generic vegan mexican Lunch: Dish 2 for {servings} servings.",
+        "Generic vegan mexican Lunch: Dish 3 for {servings} servings.",
+        "Generic vegan mexican Lunch: Dish 4 for {servings} servings.",
+        "Generic vegan mexican Lunch: Dish 5 for {servings} servings.",
+        "Generic vegan mexican Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegan mexican Dinner: Dish 1 for {servings} servings.",
+        "Generic vegan mexican Dinner: Dish 2 for {servings} servings.",
+        "Generic vegan mexican Dinner: Dish 3 for {servings} servings.",
+        "Generic vegan mexican Dinner: Dish 4 for {servings} servings.",
+        "Generic vegan mexican Dinner: Dish 5 for {servings} servings.",
+        "Generic vegan mexican Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegan mexican Snack: Dish 1 for {servings} servings.",
+        "Generic vegan mexican Snack: Dish 2 for {servings} servings.",
+        "Generic vegan mexican Snack: Dish 3 for {servings} servings.",
+        "Generic vegan mexican Snack: Dish 4 for {servings} servings.",
+        "Generic vegan mexican Snack: Dish 5 for {servings} servings.",
+        "Generic vegan mexican Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "asian": {
+      "breakfast": [
+        "Generic vegan asian Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegan asian Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegan asian Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegan asian Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegan asian Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegan asian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegan asian Lunch: Dish 1 for {servings} servings.",
+        "Generic vegan asian Lunch: Dish 2 for {servings} servings.",
+        "Generic vegan asian Lunch: Dish 3 for {servings} servings.",
+        "Generic vegan asian Lunch: Dish 4 for {servings} servings.",
+        "Generic vegan asian Lunch: Dish 5 for {servings} servings.",
+        "Generic vegan asian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegan asian Dinner: Dish 1 for {servings} servings.",
+        "Generic vegan asian Dinner: Dish 2 for {servings} servings.",
+        "Generic vegan asian Dinner: Dish 3 for {servings} servings.",
+        "Generic vegan asian Dinner: Dish 4 for {servings} servings.",
+        "Generic vegan asian Dinner: Dish 5 for {servings} servings.",
+        "Generic vegan asian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegan asian Snack: Dish 1 for {servings} servings.",
+        "Generic vegan asian Snack: Dish 2 for {servings} servings.",
+        "Generic vegan asian Snack: Dish 3 for {servings} servings.",
+        "Generic vegan asian Snack: Dish 4 for {servings} servings.",
+        "Generic vegan asian Snack: Dish 5 for {servings} servings.",
+        "Generic vegan asian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "indian": {
+      "breakfast": [
+        "Generic vegan indian Breakfast: Dish 1 for {servings} servings.",
+        "Generic vegan indian Breakfast: Dish 2 for {servings} servings.",
+        "Generic vegan indian Breakfast: Dish 3 for {servings} servings.",
+        "Generic vegan indian Breakfast: Dish 4 for {servings} servings.",
+        "Generic vegan indian Breakfast: Dish 5 for {servings} servings.",
+        "Generic vegan indian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic vegan indian Lunch: Dish 1 for {servings} servings.",
+        "Generic vegan indian Lunch: Dish 2 for {servings} servings.",
+        "Generic vegan indian Lunch: Dish 3 for {servings} servings.",
+        "Generic vegan indian Lunch: Dish 4 for {servings} servings.",
+        "Generic vegan indian Lunch: Dish 5 for {servings} servings.",
+        "Generic vegan indian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic vegan indian Dinner: Dish 1 for {servings} servings.",
+        "Generic vegan indian Dinner: Dish 2 for {servings} servings.",
+        "Generic vegan indian Dinner: Dish 3 for {servings} servings.",
+        "Generic vegan indian Dinner: Dish 4 for {servings} servings.",
+        "Generic vegan indian Dinner: Dish 5 for {servings} servings.",
+        "Generic vegan indian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic vegan indian Snack: Dish 1 for {servings} servings.",
+        "Generic vegan indian Snack: Dish 2 for {servings} servings.",
+        "Generic vegan indian Snack: Dish 3 for {servings} servings.",
+        "Generic vegan indian Snack: Dish 4 for {servings} servings.",
+        "Generic vegan indian Snack: Dish 5 for {servings} servings.",
+        "Generic vegan indian Snack: Dish 6 for {servings} servings."
+      ]
+    }
+  },
+  "gluten-free": {
+    "any": {
+      "breakfast": [
+        "Gluten-Free Oatmeal: Oats with fruit for {servings} servings.",
+        "Egg Scramble: Eggs with veggies for {servings} servings.",
+        "Smoothie: Fruit blend for {servings} servings.",
+        "Rice Porridge: Rice with milk for {servings} servings.",
+        "Gluten-Free Pancakes: Pancakes for {servings} servings.",
+        "Yogurt Bowl: Yogurt with nuts for {servings} servings."
+      ],
+      "lunch": [
+        "Quinoa Salad: Quinoa with veggies for {servings} servings.",
+        "Gluten-Free Wrap: Rice wrap with chicken for {servings} servings.",
+        "Rice Bowl: Rice with veggies for {servings} servings.",
+        "Chicken Salad: Grilled chicken for {servings} servings.",
+        "Tuna Salad: Tuna with greens for {servings} servings.",
+        "Soup: Gluten-free veggie soup for {servings} servings."
+      ],
+      "dinner": [
+        "Grilled Chicken: Chicken with rice for {servings} servings.",
+        "Fish Tacos: Corn tortillas for {servings} servings.",
+        "Stuffed Zucchini: Zucchini with rice for {servings} servings.",
+        "Beef Stir-Fry: Beef with veggies for {servings} servings.",
+        "Gluten-Free Pasta: Rice pasta for {servings} servings.",
+        "Roast Veggies: Veggies with herbs for {servings} servings."
+      ],
+      "snack": [
+        "Rice Cakes: Topped with nut butter for {servings} servings.",
+        "Fruit Skewers: Fresh fruit for {servings} servings.",
+        "Gluten-Free Crackers: Crackers with cheese for {servings} servings.",
+        "Veggie Sticks: Carrots with dip for {servings} servings.",
+        "Nuts: Mixed nuts for {servings} servings.",
+        "Popcorn: Gluten-free popcorn for {servings} servings."
+      ]
+    },
+    "italian": {
+      "breakfast": [
+        "Generic gluten-free italian Breakfast: Dish 1 for {servings} servings.",
+        "Generic gluten-free italian Breakfast: Dish 2 for {servings} servings.",
+        "Generic gluten-free italian Breakfast: Dish 3 for {servings} servings.",
+        "Generic gluten-free italian Breakfast: Dish 4 for {servings} servings.",
+        "Generic gluten-free italian Breakfast: Dish 5 for {servings} servings.",
+        "Generic gluten-free italian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic gluten-free italian Lunch: Dish 1 for {servings} servings.",
+        "Generic gluten-free italian Lunch: Dish 2 for {servings} servings.",
+        "Generic gluten-free italian Lunch: Dish 3 for {servings} servings.",
+        "Generic gluten-free italian Lunch: Dish 4 for {servings} servings.",
+        "Generic gluten-free italian Lunch: Dish 5 for {servings} servings.",
+        "Generic gluten-free italian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic gluten-free italian Dinner: Dish 1 for {servings} servings.",
+        "Generic gluten-free italian Dinner: Dish 2 for {servings} servings.",
+        "Generic gluten-free italian Dinner: Dish 3 for {servings} servings.",
+        "Generic gluten-free italian Dinner: Dish 4 for {servings} servings.",
+        "Generic gluten-free italian Dinner: Dish 5 for {servings} servings.",
+        "Generic gluten-free italian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic gluten-free italian Snack: Dish 1 for {servings} servings.",
+        "Generic gluten-free italian Snack: Dish 2 for {servings} servings.",
+        "Generic gluten-free italian Snack: Dish 3 for {servings} servings.",
+        "Generic gluten-free italian Snack: Dish 4 for {servings} servings.",
+        "Generic gluten-free italian Snack: Dish 5 for {servings} servings.",
+        "Generic gluten-free italian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "mexican": {
+      "breakfast": [
+        "Generic gluten-free mexican Breakfast: Dish 1 for {servings} servings.",
+        "Generic gluten-free mexican Breakfast: Dish 2 for {servings} servings.",
+        "Generic gluten-free mexican Breakfast: Dish 3 for {servings} servings.",
+        "Generic gluten-free mexican Breakfast: Dish 4 for {servings} servings.",
+        "Generic gluten-free mexican Breakfast: Dish 5 for {servings} servings.",
+        "Generic gluten-free mexican Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic gluten-free mexican Lunch: Dish 1 for {servings} servings.",
+        "Generic gluten-free mexican Lunch: Dish 2 for {servings} servings.",
+        "Generic gluten-free mexican Lunch: Dish 3 for {servings} servings.",
+        "Generic gluten-free mexican Lunch: Dish 4 for {servings} servings.",
+        "Generic gluten-free mexican Lunch: Dish 5 for {servings} servings.",
+        "Generic gluten-free mexican Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic gluten-free mexican Dinner: Dish 1 for {servings} servings.",
+        "Generic gluten-free mexican Dinner: Dish 2 for {servings} servings.",
+        "Generic gluten-free mexican Dinner: Dish 3 for {servings} servings.",
+        "Generic gluten-free mexican Dinner: Dish 4 for {servings} servings.",
+        "Generic gluten-free mexican Dinner: Dish 5 for {servings} servings.",
+        "Generic gluten-free mexican Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic gluten-free mexican Snack: Dish 1 for {servings} servings.",
+        "Generic gluten-free mexican Snack: Dish 2 for {servings} servings.",
+        "Generic gluten-free mexican Snack: Dish 3 for {servings} servings.",
+        "Generic gluten-free mexican Snack: Dish 4 for {servings} servings.",
+        "Generic gluten-free mexican Snack: Dish 5 for {servings} servings.",
+        "Generic gluten-free mexican Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "asian": {
+      "breakfast": [
+        "Generic gluten-free asian Breakfast: Dish 1 for {servings} servings.",
+        "Generic gluten-free asian Breakfast: Dish 2 for {servings} servings.",
+        "Generic gluten-free asian Breakfast: Dish 3 for {servings} servings.",
+        "Generic gluten-free asian Breakfast: Dish 4 for {servings} servings.",
+        "Generic gluten-free asian Breakfast: Dish 5 for {servings} servings.",
+        "Generic gluten-free asian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic gluten-free asian Lunch: Dish 1 for {servings} servings.",
+        "Generic gluten-free asian Lunch: Dish 2 for {servings} servings.",
+        "Generic gluten-free asian Lunch: Dish 3 for {servings} servings.",
+        "Generic gluten-free asian Lunch: Dish 4 for {servings} servings.",
+        "Generic gluten-free asian Lunch: Dish 5 for {servings} servings.",
+        "Generic gluten-free asian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic gluten-free asian Dinner: Dish 1 for {servings} servings.",
+        "Generic gluten-free asian Dinner: Dish 2 for {servings} servings.",
+        "Generic gluten-free asian Dinner: Dish 3 for {servings} servings.",
+        "Generic gluten-free asian Dinner: Dish 4 for {servings} servings.",
+        "Generic gluten-free asian Dinner: Dish 5 for {servings} servings.",
+        "Generic gluten-free asian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic gluten-free asian Snack: Dish 1 for {servings} servings.",
+        "Generic gluten-free asian Snack: Dish 2 for {servings} servings.",
+        "Generic gluten-free asian Snack: Dish 3 for {servings} servings.",
+        "Generic gluten-free asian Snack: Dish 4 for {servings} servings.",
+        "Generic gluten-free asian Snack: Dish 5 for {servings} servings.",
+        "Generic gluten-free asian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "indian": {
+      "breakfast": [
+        "Generic gluten-free indian Breakfast: Dish 1 for {servings} servings.",
+        "Generic gluten-free indian Breakfast: Dish 2 for {servings} servings.",
+        "Generic gluten-free indian Breakfast: Dish 3 for {servings} servings.",
+        "Generic gluten-free indian Breakfast: Dish 4 for {servings} servings.",
+        "Generic gluten-free indian Breakfast: Dish 5 for {servings} servings.",
+        "Generic gluten-free indian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic gluten-free indian Lunch: Dish 1 for {servings} servings.",
+        "Generic gluten-free indian Lunch: Dish 2 for {servings} servings.",
+        "Generic gluten-free indian Lunch: Dish 3 for {servings} servings.",
+        "Generic gluten-free indian Lunch: Dish 4 for {servings} servings.",
+        "Generic gluten-free indian Lunch: Dish 5 for {servings} servings.",
+        "Generic gluten-free indian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic gluten-free indian Dinner: Dish 1 for {servings} servings.",
+        "Generic gluten-free indian Dinner: Dish 2 for {servings} servings.",
+        "Generic gluten-free indian Dinner: Dish 3 for {servings} servings.",
+        "Generic gluten-free indian Dinner: Dish 4 for {servings} servings.",
+        "Generic gluten-free indian Dinner: Dish 5 for {servings} servings.",
+        "Generic gluten-free indian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic gluten-free indian Snack: Dish 1 for {servings} servings.",
+        "Generic gluten-free indian Snack: Dish 2 for {servings} servings.",
+        "Generic gluten-free indian Snack: Dish 3 for {servings} servings.",
+        "Generic gluten-free indian Snack: Dish 4 for {servings} servings.",
+        "Generic gluten-free indian Snack: Dish 5 for {servings} servings.",
+        "Generic gluten-free indian Snack: Dish 6 for {servings} servings."
+      ]
+    }
+  },
+  "keto": {
+    "any": {
+      "breakfast": [
+        "Keto Eggs: Eggs with bacon for {servings} servings.",
+        "Avocado Bowl: Avocado with eggs for {servings} servings.",
+        "Keto Smoothie: Spinach and avocado for {servings} servings.",
+        "Keto Pancakes: Almond flour pancakes for {servings} servings.",
+        "Bacon Wraps: Veggies in bacon for {servings} servings.",
+        "Keto Muffins: Cheese muffins for {servings} servings."
+      ],
+      "lunch": [
+        "Keto Cobb Salad: Salad with avocado for {servings} servings.",
+        "Keto Wrap: Lettuce wrap with chicken for {servings} servings.",
+        "Keto Soup: Creamy broccoli soup for {servings} servings.",
+        "Salmon Salad: Salmon with greens for {servings} servings.",
+        "Keto Burger: Bunless burger for {servings} servings.",
+        "Tuna Boats: Tuna in cucumber for {servings} servings."
+      ],
+      "dinner": [
+        "Keto Steak: Steak with broccoli for {servings} servings.",
+        "Keto Chicken: Chicken with cream sauce for {servings} servings.",
+        "Keto Fish: Grilled fish for {servings} servings.",
+        "Keto Stir-Fry: Beef with veggies for {servings} servings.",
+        "Keto Casserole: Cheese and veggies for {servings} servings.",
+        "Keto Ribs: Pork ribs for {servings} servings."
+      ],
+      "snack": [
+        "Keto Cheese Crisps: Baked cheese for {servings} servings.",
+        "Keto Nuts: Macadamia nuts for {servings} servings.",
+        "Keto Veggies: Celery with dip for {servings} servings.",
+        "Keto Jerky: Beef jerky for {servings} servings.",
+        "Keto Avocado: Avocado halves for {servings} servings.",
+        "Keto Olives: Marinated olives for {servings} servings."
+      ]
+    },
+    "italian": {
+      "breakfast": [
+        "Generic keto italian Breakfast: Dish 1 for {servings} servings.",
+        "Generic keto italian Breakfast: Dish 2 for {servings} servings.",
+        "Generic keto italian Breakfast: Dish 3 for {servings} servings.",
+        "Generic keto italian Breakfast: Dish 4 for {servings} servings.",
+        "Generic keto italian Breakfast: Dish 5 for {servings} servings.",
+        "Generic keto italian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic keto italian Lunch: Dish 1 for {servings} servings.",
+        "Generic keto italian Lunch: Dish 2 for {servings} servings.",
+        "Generic keto italian Lunch: Dish 3 for {servings} servings.",
+        "Generic keto italian Lunch: Dish 4 for {servings} servings.",
+        "Generic keto italian Lunch: Dish 5 for {servings} servings.",
+        "Generic keto italian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic keto italian Dinner: Dish 1 for {servings} servings.",
+        "Generic keto italian Dinner: Dish 2 for {servings} servings.",
+        "Generic keto italian Dinner: Dish 3 for {servings} servings.",
+        "Generic keto italian Dinner: Dish 4 for {servings} servings.",
+        "Generic keto italian Dinner: Dish 5 for {servings} servings.",
+        "Generic keto italian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic keto italian Snack: Dish 1 for {servings} servings.",
+        "Generic keto italian Snack: Dish 2 for {servings} servings.",
+        "Generic keto italian Snack: Dish 3 for {servings} servings.",
+        "Generic keto italian Snack: Dish 4 for {servings} servings.",
+        "Generic keto italian Snack: Dish 5 for {servings} servings.",
+        "Generic keto italian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "mexican": {
+      "breakfast": [
+        "Generic keto mexican Breakfast: Dish 1 for {servings} servings.",
+        "Generic keto mexican Breakfast: Dish 2 for {servings} servings.",
+        "Generic keto mexican Breakfast: Dish 3 for {servings} servings.",
+        "Generic keto mexican Breakfast: Dish 4 for {servings} servings.",
+        "Generic keto mexican Breakfast: Dish 5 for {servings} servings.",
+        "Generic keto mexican Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic keto mexican Lunch: Dish 1 for {servings} servings.",
+        "Generic keto mexican Lunch: Dish 2 for {servings} servings.",
+        "Generic keto mexican Lunch: Dish 3 for {servings} servings.",
+        "Generic keto mexican Lunch: Dish 4 for {servings} servings.",
+        "Generic keto mexican Lunch: Dish 5 for {servings} servings.",
+        "Generic keto mexican Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic keto mexican Dinner: Dish 1 for {servings} servings.",
+        "Generic keto mexican Dinner: Dish 2 for {servings} servings.",
+        "Generic keto mexican Dinner: Dish 3 for {servings} servings.",
+        "Generic keto mexican Dinner: Dish 4 for {servings} servings.",
+        "Generic keto mexican Dinner: Dish 5 for {servings} servings.",
+        "Generic keto mexican Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic keto mexican Snack: Dish 1 for {servings} servings.",
+        "Generic keto mexican Snack: Dish 2 for {servings} servings.",
+        "Generic keto mexican Snack: Dish 3 for {servings} servings.",
+        "Generic keto mexican Snack: Dish 4 for {servings} servings.",
+        "Generic keto mexican Snack: Dish 5 for {servings} servings.",
+        "Generic keto mexican Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "asian": {
+      "breakfast": [
+        "Generic keto asian Breakfast: Dish 1 for {servings} servings.",
+        "Generic keto asian Breakfast: Dish 2 for {servings} servings.",
+        "Generic keto asian Breakfast: Dish 3 for {servings} servings.",
+        "Generic keto asian Breakfast: Dish 4 for {servings} servings.",
+        "Generic keto asian Breakfast: Dish 5 for {servings} servings.",
+        "Generic keto asian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic keto asian Lunch: Dish 1 for {servings} servings.",
+        "Generic keto asian Lunch: Dish 2 for {servings} servings.",
+        "Generic keto asian Lunch: Dish 3 for {servings} servings.",
+        "Generic keto asian Lunch: Dish 4 for {servings} servings.",
+        "Generic keto asian Lunch: Dish 5 for {servings} servings.",
+        "Generic keto asian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic keto asian Dinner: Dish 1 for {servings} servings.",
+        "Generic keto asian Dinner: Dish 2 for {servings} servings.",
+        "Generic keto asian Dinner: Dish 3 for {servings} servings.",
+        "Generic keto asian Dinner: Dish 4 for {servings} servings.",
+        "Generic keto asian Dinner: Dish 5 for {servings} servings.",
+        "Generic keto asian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic keto asian Snack: Dish 1 for {servings} servings.",
+        "Generic keto asian Snack: Dish 2 for {servings} servings.",
+        "Generic keto asian Snack: Dish 3 for {servings} servings.",
+        "Generic keto asian Snack: Dish 4 for {servings} servings.",
+        "Generic keto asian Snack: Dish 5 for {servings} servings.",
+        "Generic keto asian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "indian": {
+      "breakfast": [
+        "Generic keto indian Breakfast: Dish 1 for {servings} servings.",
+        "Generic keto indian Breakfast: Dish 2 for {servings} servings.",
+        "Generic keto indian Breakfast: Dish 3 for {servings} servings.",
+        "Generic keto indian Breakfast: Dish 4 for {servings} servings.",
+        "Generic keto indian Breakfast: Dish 5 for {servings} servings.",
+        "Generic keto indian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic keto indian Lunch: Dish 1 for {servings} servings.",
+        "Generic keto indian Lunch: Dish 2 for {servings} servings.",
+        "Generic keto indian Lunch: Dish 3 for {servings} servings.",
+        "Generic keto indian Lunch: Dish 4 for {servings} servings.",
+        "Generic keto indian Lunch: Dish 5 for {servings} servings.",
+        "Generic keto indian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic keto indian Dinner: Dish 1 for {servings} servings.",
+        "Generic keto indian Dinner: Dish 2 for {servings} servings.",
+        "Generic keto indian Dinner: Dish 3 for {servings} servings.",
+        "Generic keto indian Dinner: Dish 4 for {servings} servings.",
+        "Generic keto indian Dinner: Dish 5 for {servings} servings.",
+        "Generic keto indian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic keto indian Snack: Dish 1 for {servings} servings.",
+        "Generic keto indian Snack: Dish 2 for {servings} servings.",
+        "Generic keto indian Snack: Dish 3 for {servings} servings.",
+        "Generic keto indian Snack: Dish 4 for {servings} servings.",
+        "Generic keto indian Snack: Dish 5 for {servings} servings.",
+        "Generic keto indian Snack: Dish 6 for {servings} servings."
+      ]
+    }
+  },
+  "non-vegetarian": {
+    "any": {
+      "breakfast": [
+        "Chicken Sausage: Sausage with eggs for {servings} servings.",
+        "Bacon and Eggs: Crispy bacon for {servings} servings.",
+        "Ham Omelette: Eggs with ham for {servings} servings.",
+        "Breakfast Tacos: Eggs with chorizo for {servings} servings.",
+        "Turkey Scramble: Turkey with veggies for {servings} servings.",
+        "Salmon Bagel: Smoked salmon for {servings} servings."
+      ],
+      "lunch": [
+        "Chicken Wrap: Chicken with lettuce for {servings} servings.",
+        "Beef Salad: Beef with greens for {servings} servings.",
+        "Tuna Sandwich: Tuna with mayo for {servings} servings.",
+        "Ham Panini: Ham with cheese for {servings} servings.",
+        "Shrimp Salad: Shrimp with avocado for {servings} servings.",
+        "Turkey Burger: Turkey patty for {servings} servings."
+      ],
+      "dinner": [
+        "Grilled Chicken: Chicken with veggies for {servings} servings.",
+        "Beef Steak: Steak with sauce for {servings} servings.",
+        "Salmon Fillet: Grilled salmon for {servings} servings.",
+        "Pork Ribs: BBQ ribs for {servings} servings.",
+        "Shrimp Curry: Shrimp in curry for {servings} servings.",
+        "Lamb Chops: Grilled lamb for {servings} servings."
+      ],
+      "snack": [
+        "Chicken Skewers: Grilled chicken for {servings} servings.",
+        "Beef Jerky: Spiced beef for {servings} servings.",
+        "Salmon Bites: Smoked salmon for {servings} servings.",
+        "Pork Rinds: Crispy pork for {servings} servings.",
+        "Turkey Roll-Ups: Turkey with cheese for {servings} servings.",
+        "Shrimp Cocktail: Shrimp with sauce for {servings} servings."
+      ]
+    },
+    "italian": {
+      "breakfast": [
+        "Pancetta Frittata: Eggs with pancetta for {servings} servings.",
+        "Prosciutto Toast: Toast with ham for {servings} servings.",
+        "Salami Scramble: Eggs with salami for {servings} servings.",
+        "Italian Omelette: Eggs with sausage for {servings} servings.",
+        "Bacon Croissant: Croissant with bacon for {servings} servings.",
+        "Sausage Muffin: Muffin with sausage for {servings} servings."
+      ],
+      "lunch": [
+        "Prosciutto Panini: Ham sandwich for {servings} servings.",
+        "Italian Sub: Sub with salami for {servings} servings.",
+        "Chicken Caesar: Salad with chicken for {servings} servings.",
+        "Meatball Sub: Sub with meatballs for {servings} servings.",
+        "Sausage Pizza: Pizza with sausage for {servings} servings.",
+        "Pepperoni Wrap: Wrap with pepperoni for {servings} servings."
+      ],
+      "dinner": [
+        "Chicken Parmesan: Breaded chicken for {servings} servings.",
+        "Spaghetti Bolognese: Meat sauce pasta for {servings} servings.",
+        "Seafood Linguine: Pasta with shrimp for {servings} servings.",
+        "Veal Marsala: Veal in wine sauce for {servings} servings.",
+        "Sausage Risotto: Rice with sausage for {servings} servings.",
+        "Lamb Ragu: Pasta with lamb for {servings} servings."
+      ],
+      "snack": [
+        "Prosciutto Wraps: Melon with ham for {servings} servings.",
+        "Salami Sticks: Sliced salami for {servings} servings.",
+        "Pepperoni Chips: Baked pepperoni for {servings} servings.",
+        "Anchovy Toast: Toast with anchovies for {servings} servings.",
+        "Sausage Bites: Grilled sausage for {servings} servings.",
+        "Parma Ham: Sliced ham for {servings} servings."
+      ]
+    },
+    "mexican": {
+      "breakfast": [
+        "Generic non-vegetarian mexican Breakfast: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian mexican Breakfast: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian mexican Breakfast: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian mexican Breakfast: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian mexican Breakfast: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian mexican Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic non-vegetarian mexican Lunch: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian mexican Lunch: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian mexican Lunch: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian mexican Lunch: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian mexican Lunch: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian mexican Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic non-vegetarian mexican Dinner: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian mexican Dinner: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian mexican Dinner: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian mexican Dinner: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian mexican Dinner: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian mexican Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic non-vegetarian mexican Snack: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian mexican Snack: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian mexican Snack: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian mexican Snack: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian mexican Snack: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian mexican Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "asian": {
+      "breakfast": [
+        "Generic non-vegetarian asian Breakfast: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian asian Breakfast: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian asian Breakfast: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian asian Breakfast: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian asian Breakfast: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian asian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic non-vegetarian asian Lunch: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian asian Lunch: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian asian Lunch: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian asian Lunch: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian asian Lunch: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian asian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic non-vegetarian asian Dinner: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian asian Dinner: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian asian Dinner: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian asian Dinner: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian asian Dinner: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian asian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic non-vegetarian asian Snack: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian asian Snack: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian asian Snack: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian asian Snack: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian asian Snack: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian asian Snack: Dish 6 for {servings} servings."
+      ]
+    },
+    "indian": {
+      "breakfast": [
+        "Generic non-vegetarian indian Breakfast: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian indian Breakfast: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian indian Breakfast: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian indian Breakfast: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian indian Breakfast: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian indian Breakfast: Dish 6 for {servings} servings."
+      ],
+      "lunch": [
+        "Generic non-vegetarian indian Lunch: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian indian Lunch: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian indian Lunch: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian indian Lunch: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian indian Lunch: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian indian Lunch: Dish 6 for {servings} servings."
+      ],
+      "dinner": [
+        "Generic non-vegetarian indian Dinner: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian indian Dinner: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian indian Dinner: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian indian Dinner: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian indian Dinner: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian indian Dinner: Dish 6 for {servings} servings."
+      ],
+      "snack": [
+        "Generic non-vegetarian indian Snack: Dish 1 for {servings} servings.",
+        "Generic non-vegetarian indian Snack: Dish 2 for {servings} servings.",
+        "Generic non-vegetarian indian Snack: Dish 3 for {servings} servings.",
+        "Generic non-vegetarian indian Snack: Dish 4 for {servings} servings.",
+        "Generic non-vegetarian indian Snack: Dish 5 for {servings} servings.",
+        "Generic non-vegetarian indian Snack: Dish 6 for {servings} servings."
+      ]
+    }
+  }
+}
