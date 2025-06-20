@@ -24,6 +24,21 @@
             outline: none;
             box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
         }
+        body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: url('https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif') center center / cover no-repeat;
+    opacity: 0.08;
+    z-index: -1;
+    animation: slowFade 20s infinite alternate;
+}
+
+@keyframes slowFade {
+    0% { opacity: 0.08; }
+    100% { opacity: 0.12; }
+}
+
     </style>
 </head>
 <body class="font-sans min-h-screen">
@@ -304,6 +319,35 @@
 
         // GSAP animations for heading
         gsap.from('h2', { opacity: 0, y: -50, duration: 1, ease: 'bounce.out', stagger: 0.2 });
+gsap.from(mealCard, {
+    opacity: 0,
+    y: 20,
+    scale: 0.95,
+    duration: 0.6,
+    ease: "power1.out"
+});
+function floatEmojis() {
+    const foodEmojis = ['🍕', '🍔', '🍣', '🥗', '🍜', '🥘', '🍩'];
+    foodEmojis.forEach((emoji, index) => {
+        const el = document.createElement('div');
+        el.textContent = emoji;
+        el.className = 'text-3xl fixed z-0 pointer-events-none';
+        el.style.left = `${Math.random() * 100}%`;
+        el.style.top = `-50px`;
+        document.body.appendChild(el);
+
+        gsap.to(el, {
+            y: window.innerHeight + 50,
+            x: `+=${Math.random() * 100 - 50}`,
+            rotation: Math.random() * 360,
+            duration: Math.random() * 10 + 10,
+            ease: 'linear',
+            onComplete: () => el.remove()
+        });
+    });
+}
+
+setInterval(floatEmojis, 3000);
 
         // Practical AI Features (all functional)
         const aiFeatures = [
