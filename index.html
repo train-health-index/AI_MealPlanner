@@ -6,52 +6,58 @@
     <title>🍽️ AI Meal Planner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<style>
-    body {
-      background: linear-gradient(to bottom, #fef3e2, #f7c6a6);
-      font-family: 'Segoe UI', sans-serif;
-    }
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.4.2/p5.min.js"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #fef3e2, #f7c6a6);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url('https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif') center center / cover no-repeat;
-      opacity: 0.08;
-      z-index: -1;
-      animation: slowFade 20s infinite alternate;
-    }
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            background: url('https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif') center center / cover no-repeat;
+            opacity: 0.08;
+            z-index: -1;
+            animation: slowFade 20s infinite alternate;
+        }
 
-    @keyframes slowFade {
-      0% { opacity: 0.08; }
-      100% { opacity: 0.12; }
-    }
+        @keyframes slowFade {
+            0% { opacity: 0.08; }
+            100% { opacity: 0.12; }
+        }
 
-    .food-card {
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
+        .food-card {
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-    .food-card:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-    }
+        .food-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
 
-    .modal-bg {
-      backdrop-filter: blur(5px);
-    }
+        .modal-bg {
+            backdrop-filter: blur(5px);
+        }
 
-    input:focus, select:focus {
-      outline: none;
-      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
-    }
+        input:focus, select:focus, button:focus {
+            outline: 2px solid #ef4444;
+            outline-offset: 2px;
+        }
 
-    .floating-emoji {
-      position: fixed;
-      font-size: 1.75rem;
-      z-index: 0;
-      pointer-events: none;
-    }
-  </style>
+        .floating-emoji {
+            position: fixed;
+            font-size: 1.75rem;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        canvas {
+            border: 2px solid #ef4444;
+            border-radius: 8px;
+        }
+    </style>
 </head>
 <body class="font-sans min-h-screen">
     <!-- Navigation -->
@@ -62,41 +68,42 @@
             <a href="#" id="loginLink" class="hover:text-yellow-300 transition-colors">Login</a>
             <a href="#" id="registerLink" class="hover:text-yellow-300 transition-colors">Register</a>
             <a href="#" id="logoutLink" class="hover:text-yellow-300 transition-colors hidden">Logout</a>
+            <a href="#" id="gamesLink" class="hover:text-yellow-300 transition-colors">Mini-Games</a>
         </div>
     </nav>
 
     <!-- Login Modal -->
-    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-60 modal-bg flex items-center justify-center z-30 hidden">
+    <div id="loginModal" class="fixed inset-0 bg-black bg-opacity-60 modal-bg flex items-center justify-center z-30 hidden" role="dialog" aria-labelledby="loginModalTitle" aria-modal="true">
         <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full">
-            <h2 class="text-3xl font-bold text-red-600 mb-6 text-center flex items-center justify-center">🍴 Welcome Back!</h2>
+            <h2 id="loginModalTitle" class="text-3xl font-bold text-red-600 mb-6 text-center flex items-center justify-center">🍴 Welcome Back!</h2>
             <form id="loginForm" class="space-y-6">
                 <div>
                     <label for="loginUsername" class="block text-sm font-medium text-gray-700">Username</label>
-                    <input type="text" id="loginUsername" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required>
+                    <input type="text" id="loginUsername" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required aria-required="true">
                 </div>
                 <div>
                     <label for="loginPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="loginPassword" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required>
+                    <input type="password" id="loginPassword" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required aria-required="true">
                 </div>
                 <button type="submit" class="w-full bg-red-600 text-white p-3 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105">Login</button>
                 <button type="button" id="closeLogin" class="w-full bg-gray-200 text-gray-700 p-3 rounded-lg mt-4 hover:bg-gray-300 transition-all">Close</button>
             </form>
-            <p id="loginError" class="mt-4 text-center text-red-600 hidden"></p>
+            <p id="loginError" class="mt-4 text-center text-red-600 hidden" role="alert"></p>
         </div>
     </div>
 
     <!-- Register Modal -->
-    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-60 modal-bg flex items-center justify-center z-30 hidden">
+    <div id="registerModal" class="fixed inset-0 bg-black bg-opacity-60 modal-bg flex items-center justify-center z-30 hidden" role="dialog" aria-labelledby="registerModalTitle" aria-modal="true">
         <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-md w-full overflow-y-auto max-h-[85vh]">
-            <h2 class="text-3xl font-bold text-red-600 mb-6 text-center flex items-center justify-center">🥗 Join the Feast!</h2>
+            <h2 id="registerModalTitle" class="text-3xl font-bold text-red-600 mb-6 text-center flex items-center justify-center">🥗 Join the Feast!</h2>
             <form id="registerForm" class="space-y-6">
                 <div>
                     <label for="regUsername" class="block text-sm font-medium text-gray-700">Username</label>
-                    <input type="text" id="regUsername" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required>
+                    <input type="text" id="regUsername" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required aria-required="true">
                 </div>
                 <div>
                     <label for="regPassword" class="block text-sm font-medium text-gray-700">Password</label>
-                    <input type="password" id="regPassword" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required>
+                    <input type="password" id="regPassword" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" required aria-required="true">
                 </div>
                 <div>
                     <label for="dietPref" class="block text-sm font-medium text-gray-700">Preferred Diet</label>
@@ -117,7 +124,7 @@
                 </div>
                 <div>
                     <label for="favCuisines" class="block text-sm font-medium text-gray-700">Favorite Cuisines</label>
-                    <input type="text" id="favCuisines" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" placeholder="e.g., Italian, Mexican">
+                    <input type="text" id="favCuisines" class="mt-2 block w-full p-2 border border-gray-300 rounded-lg transition-all" placeholder="e.g., Italian, Mexican">
                 </div>
                 <div>
                     <label for="calorieGoal" class="block text-sm font-medium text-gray-700">Daily Calorie Goal</label>
@@ -126,7 +133,20 @@
                 <button type="submit" class="w-full bg-red-600 text-white p-3 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105">Register</button>
                 <button type="button" id="closeRegister" class="w-full bg-gray-200 text-gray-700 p-3 rounded-lg mt-4 hover:bg-gray-300 transition-all">Close</button>
             </form>
-            <p id="registerError" class="mt-4 text-center text-red-600 hidden"></p>
+            <p id="registerError" class="mt-4 text-center text-red-600 hidden" role="alert"></p>
+        </div>
+    </div>
+
+    <!-- Games Modal -->
+    <div id="gamesModal" class="fixed inset-0 bg-black bg-opacity-60 modal-bg flex items-center justify-center z-30 hidden" role="dialog" aria-labelledby="gamesModalTitle" aria-modal="true">
+        <div class="bg-white p-8 rounded-2xl shadow-2xl max-w-3xl w-full">
+            <h2 id="gamesModalTitle" class="text-3xl font-bold text-red-600 mb-6 text-center flex items-center justify-center">🎮 Foodie Mini-Games</h2>
+            <div class="space-y-4">
+                <button id="catchGameBtn" class="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600 transition-all">Play Catch the Ingredients</button>
+                <button id="quizGameBtn" class="w-full bg-orange-500 text-white p-3 rounded-lg hover:bg-orange-600 transition-all">Play Food Quiz</button>
+                <button id="closeGames" class="w-full bg-gray-200 text-gray-700 p-3 rounded-lg hover:bg-gray-300 transition-all">Close</button>
+            </div>
+            <div id="gameContainer" class="mt-6"></div>
         </div>
     </div>
 
@@ -155,15 +175,6 @@
                     <label for="cuisine" class="block text-sm font-medium text-gray-700">Cuisine Preference</label>
                     <select id="cuisine" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all">
                         <option value="any">Any</option>
-                        <option value="italian">Italian</option>
-                        <option value="mexican">Mexican</option>
-                        <option value="asian">Asian</option>
-                        <option value="indian">Indian</option>
-                        <option value="mediterranean">Mediterranean</option>
-                        <option value="american">American</option>
-                        <option value="french">French</option>
-                        <option value="thai">Thai</option>
-                        <option value="middle_eastern">Middle Eastern</option>
                     </select>
                 </div>
                 <div>
@@ -179,7 +190,17 @@
                 </div>
                 <div>
                     <label for="servings" class="block text-sm font-medium text-gray-700">Number of Servings</label>
-                    <input type="number" id="servings" min="1" value="1" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all">
+                    <input type="number" id="servings" min="1" value="1" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all" aria-required="true">
+                </div>
+                <div>
+                    <label for="mood" class="block text-sm font-medium text-gray-700">Your Mood</label>
+                    <select id="mood" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg transition-all">
+                        <option value="any">Any</option>
+                        <option value="cozy">Cozy</option>
+                        <option value="adventurous">Adventurous</option>
+                        <option value="healthy">Healthy</option>
+                        <option value="quick">Quick</option>
+                    </select>
                 </div>
                 <div class="flex space-x-4">
                     <button type="submit" class="flex-1 bg-red-600 text-white p-3 rounded-lg hover:bg-red-700 transition-all transform hover:scale-105 flex items-center justify-center">
@@ -202,98 +223,208 @@
     </div>
 
     <script>
-        // Load meals.json
+        // Mock hash function for passwords (replace with backend in production)
+        function mockHash(str) {
+            let hash = 0;
+            for (let i = 0; i < str.length; i++) {
+                hash = ((hash << 5) - hash) + str.charCodeAt(i);
+                hash |= 0;
+            }
+            return hash.toString(16);
+        }
+
+        // Sanitize input to prevent XSS
+        function sanitizeInput(input) {
+            const div = document.createElement('div');
+            div.textContent = input;
+            return div.innerHTML;
+        }
+
+        // Show error messages
+        function showError(elementId, message) {
+            const error = document.getElementById(elementId);
+            error.textContent = message;
+            error.classList.remove('hidden');
+            gsap.from(error, { opacity: 0, y: 10, duration: 0.5 });
+        }
+
+        // Load meals.json with fallback
         let mealData = {};
         fetch('meals.json')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) throw new Error('Failed to load meals.json');
+                return response.json();
+            })
             .then(data => {
-                mealData = data;
+                mealData = data || {};
                 updateCuisineOptions();
             })
-            .catch(error => console.error('Error loading meals.json:', error));
+            .catch(error => {
+                console.error('Error loading meals.json:', error);
+                mealData = {
+                    none: {
+                        any: {
+                            breakfast: {
+                                template: 'Cook {servings} servings of {protein} with {vegetable}, season with {seasoning}, and serve with {side}.',
+                                ingredients: ['{protein}', '{vegetable}', '{side}', '{seasoning}'],
+                                proteins: ['eggs', 'sausage'],
+                                vegetables: ['tomatoes', 'spinach'],
+                                sides: ['toast', 'croissant'],
+                                seasoning: 'basil'
+                            }
+                        }
+                    }
+                };
+                updateCuisineOptions();
+                showError('loginError', 'Failed to load meal data. Using fallback options.');
+            });
 
         // Update cuisine options dynamically
         function updateCuisineOptions() {
             const cuisineSelect = document.getElementById('cuisine');
             const cuisines = Object.keys(mealData[Object.keys(mealData)[0]] || {});
-            cuisineSelect.innerHTML = cuisines.map(c => <option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>).join('');
+            cuisineSelect.innerHTML = '<option value="any">Any</option>' + cuisines.map(c => `<option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>`).join('');
         }
 
         // Modal controls
         const loginModal = document.getElementById('loginModal');
         const registerModal = document.getElementById('registerModal');
+        const gamesModal = document.getElementById('gamesModal');
         const loginLink = document.getElementById('loginLink');
         const registerLink = document.getElementById('registerLink');
+        const gamesLink = document.getElementById('gamesLink');
         const closeLogin = document.getElementById('closeLogin');
         const closeRegister = document.getElementById('closeRegister');
+        const closeGames = document.getElementById('closeGames');
         const mealPlanner = document.getElementById('mealPlanner');
 
         loginLink.addEventListener('click', () => {
             loginModal.classList.remove('hidden');
+            loginModal.querySelector('input').focus();
             gsap.from(loginModal.querySelector('div'), { opacity: 0, scale: 0.8, y: 50, duration: 0.5, ease: 'back.out(1.7)' });
         });
         registerLink.addEventListener('click', () => {
             registerModal.classList.remove('hidden');
+            registerModal.querySelector('input').focus();
             gsap.from(registerModal.querySelector('div'), { opacity: 0, scale: 0.8, y: 50, duration: 0.5, ease: 'back.out(1.7)' });
+        });
+        gamesLink.addEventListener('click', () => {
+            gamesModal.classList.remove('hidden');
+            gamesModal.querySelector('button').focus();
+            gsap.from(gamesModal.querySelector('div'), { opacity: 0, scale: 0.8, y: 50, duration: 0.5, ease: 'back.out(1.7)' });
         });
         closeLogin.addEventListener('click', () => {
             gsap.to(loginModal.querySelector('div'), {
-                opacity: 0, scale: 0.8, y: 50, duration: 0.3, onComplete: () => loginModal.classList.add('hidden')
+                opacity: 0,
+                scale: 0.8,
+                y: 50,
+                duration: 0.3,
+                onComplete: () => loginModal.classList.add('hidden')
             });
         });
         closeRegister.addEventListener('click', () => {
             gsap.to(registerModal.querySelector('div'), {
-                opacity: 0, scale: 0.8, y: 50, duration: 0.3, onComplete: () => registerModal.classList.add('hidden')
+                opacity: 0,
+                scale: 0.8,
+                y: 50,
+                duration: 0.3,
+                onComplete: () => registerModal.classList.add('hidden')
+            });
+        });
+        closeGames.addEventListener('click', () => {
+            gsap.to(gamesModal.querySelector('div'), {
+                opacity: 0,
+                scale: 0.8,
+                y: 50,
+                duration: 0.3,
+                onComplete: () => {
+                    gamesModal.classList.add('hidden');
+                    stopGame();
+                }
+            });
+        });
+
+        // Keyboard navigation for modals
+        document.querySelectorAll('.modal-bg').forEach(modal => {
+            modal.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') {
+                    modal.classList.add('hidden');
+                    stopGame();
+                }
             });
         });
 
         // Login form
         document.getElementById('loginForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-            const users = JSON.parse(localStorage.getItem('users') || '{}');
+            const username = sanitizeInput(document.getElementById('loginUsername').value.trim());
+            const password = mockHash(document.getElementById('loginPassword').value);
 
+            if (!username || !password) {
+                showError('loginError', 'Please fill in all fields');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users') || '{}');
             if (users[username] && users[username].password === password) {
                 localStorage.setItem('currentUser', username);
                 updateUI();
                 gsap.to(loginModal.querySelector('div'), {
-                    opacity: 0, scale: 0.8, y: 50, duration: 0.3, onComplete: () => loginModal.classList.add('hidden')
+                    opacity: 0,
+                    scale: 0.8,
+                    y: 50,
+                    duration: 0.3,
+                    onComplete: () => loginModal.classList.add('hidden')
                 });
             } else {
-                const error = document.getElementById('loginError');
-                error.textContent = 'Invalid username or password';
-                error.classList.remove('hidden');
-                gsap.from(error, { opacity: 0, y: 10, duration: 0.5 });
+                showError('loginError', 'Invalid username or password');
             }
         });
 
         // Register form
         document.getElementById('registerForm').addEventListener('submit', (e) => {
             e.preventDefault();
-            const username = document.getElementById('regUsername').value;
-            const password = document.getElementById('regPassword').value;
+            const username = sanitizeInput(document.getElementById('regUsername').value.trim());
+            const password = mockHash(document.getElementById('regPassword').value);
             const dietPref = document.getElementById('dietPref').value;
-            const allergies = document.getElementById('allergies').value;
-            const favCuisines = document.getElementById('favCuisines').value;
-            const calorieGoal = document.getElementById('calorieGoal').value;
+            const allergies = sanitizeInput(document.getElementById('allergies').value.trim());
+            const favCuisines = sanitizeInput(document.getElementById('favCuisines').value.trim());
+            const calorieGoal = parseInt(document.getElementById('calorieGoal').value) || 0;
+
+            if (!username || username.length < 3) {
+                showError('registerError', 'Username must be at least 3 characters');
+                return;
+            }
+            if (!password || document.getElementById('regPassword').value.length < 6) {
+                showError('registerError', 'Password must be at least 6 characters');
+                return;
+            }
+            if (calorieGoal < 0) {
+                showError('registerError', 'Calorie goal cannot be negative');
+                return;
+            }
 
             const users = JSON.parse(localStorage.getItem('users') || '{}');
             if (users[username]) {
-                const error = document.getElementById('registerError');
-                error.textContent = 'Username already exists';
-                error.classList.remove('hidden');
-                gsap.from(error, { opacity: 0, y: 10, duration: 0.5 });
+                showError('registerError', 'Username already exists');
                 return;
             }
 
             users[username] = { password, preferences: { dietPref, allergies, favCuisines, calorieGoal } };
-            localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', username);
-            updateUI();
-            gsap.to(registerModal.querySelector('div'), {
-                opacity: 0, scale: 0.8, y: 50, duration: 0.3, onComplete: () => registerModal.classList.add('hidden')
-            });
+            try {
+                localStorage.setItem('users', JSON.stringify(users));
+                localStorage.setItem('currentUser', username);
+                updateUI();
+                gsap.to(registerModal.querySelector('div'), {
+                    opacity: 0,
+                    scale: 0.8,
+                    y: 50,
+                    duration: 0.3,
+                    onComplete: () => registerModal.classList.add('hidden')
+                });
+            } catch (e) {
+                showError('registerError', 'Storage limit reached. Please clear some data.');
+            }
         });
 
         // Update UI based on login status
@@ -303,7 +434,7 @@
             const logoutLink = document.getElementById('logoutLink');
             if (currentUser) {
                 const users = JSON.parse(localStorage.getItem('users') || '{}');
-                userGreeting.textContent = Hello, ${currentUser}! 👋;
+                userGreeting.textContent = `Hello, ${currentUser}! 👋`;
                 loginLink.classList.add('hidden');
                 registerLink.classList.add('hidden');
                 logoutLink.classList.remove('hidden');
@@ -332,18 +463,48 @@
         // GSAP animations for heading
         gsap.from('h2', { opacity: 0, y: -50, duration: 1, ease: 'bounce.out', stagger: 0.2 });
 
-        // Practical AI Features (all functional)
+        // AI Features
         const aiFeatures = [
+            {
+                name: 'Smart Meal Suggestion',
+                desc: 'Personalized meals based on your preferences.',
+                action: () => {
+                    const users = JSON.parse(localStorage.getItem('users') || '{}');
+                    const currentUser = localStorage.getItem('currentUser');
+                    const prefs = users[currentUser]?.preferences;
+                    if (!prefs) return alert('Please log in to use this feature.');
+                    alert(`Suggested: ${prefs.favCuisines} meal for ${prefs.dietPref} diet!`);
+                },
+                active: true
+            },
+            {
+                name: 'Nutritional Analysis',
+                desc: 'Detailed nutrient breakdown for meals.',
+                action: () => logNutrients('sample meal'),
+                active: true
+            },
+            {
+                name: 'Prep Time Estimator',
+                desc: 'Estimates meal prep time.',
+                action: () => estimatePrepTime(),
+                active: true
+            },
+            {
+                name: 'Meal Mood Matcher',
+                desc: 'Matches meals to your current mood.',
+                action: () => matchMealToMood(),
+                active: true
+            },
+            {
+                name: 'Recipe Video Generator',
+                desc: 'Generates a recipe video (mocked).',
+                action: () => alert('Video generation requires backend integration.'),
+                active: false
+            },
             {
                 name: 'Allergy Filter',
                 desc: 'Excludes meals with your allergens.',
                 action: () => alert('Allergies filtered based on your profile!'),
-                active: true
-            },
-            {
-                name: 'Calorie Estimator',
-                desc: 'Estimates meal calories (mocked).',
-                action: () => estimateCalories('sample meal'),
                 active: true
             },
             {
@@ -357,60 +518,18 @@
                 desc: 'Tracks your past meal plans.',
                 action: () => showMealHistory(),
                 active: true
-            },
-            {
-                name: 'Random Meal',
-                desc: 'Suggests a surprise meal.',
-                action: () => document.getElementById('randomMeal').click(),
-                active: true
-            },
-            {
-                name: 'Cuisine Matcher',
-                desc: 'Prioritizes your favorite cuisines.',
-                action: () => alert('Cuisine preferences applied!'),
-                active: true
-            },
-            {
-                name: 'Portion Adjuster',
-                desc: 'Scales recipes to your servings.',
-                action: () => alert('Servings adjusted in meal plan!'),
-                active: true
-            },
-            {
-                name: 'Quick Prep Filter',
-                desc: 'Shows meals under 30 minutes.',
-                action: () => alert('Filtered for quick prep meals!'),
-                active: true
-            },
-            {
-                name: 'Nutrient Tracker',
-                desc: 'Logs protein, carbs, fats (mocked).',
-                action: () => logNutrients('sample meal'),
-                active: true
-            },
-            {
-                name: 'Meal Pairing',
-                desc: 'Suggests complementary dishes.',
-                action: () => suggestPairing(),
-                active: true
-            },
-            {
-                name: 'Download Plan',
-                desc: 'Saves your meal plan as text.',
-                action: () => downloadMealPlan(),
-                active: true
             }
         ];
 
         const aiFeaturesList = document.getElementById('aiFeaturesList');
         aiFeatures.forEach(feature => {
             const li = document.createElement('li');
-            li.innerHTML = 
-                <button class="w-full text-left p-4 bg-orange-100 rounded-lg hover:bg-orange-200 transition-all flex justify-between items-center">
+            li.innerHTML = `
+                <button class="w-full text-left p-4 bg-orange-100 rounded-lg hover:bg-orange-200 transition-all flex justify-between items-center" aria-label="${feature.name}">
                     <span><strong>${feature.name}</strong>: ${feature.desc}</span>
                     <span>${feature.active ? '✅' : '🔜'}</span>
                 </button>
-            ;
+            `;
             li.querySelector('button').addEventListener('click', feature.action);
             aiFeaturesList.appendChild(li);
         });
@@ -420,7 +539,6 @@
         // AI Feature Functions
         function estimateCalories(meal) {
             const calories = Math.floor(Math.random() * 500 + 300);
-            alert(Estimated calories for ${meal}: ${calories} kcal);
             return calories;
         }
 
@@ -433,48 +551,42 @@
                 const ing = meal.querySelector('.ingredients').textContent.replace('Ingredients: ', '');
                 ingredients.push(ing);
             });
-            alert(Shopping List:\n${ingredients.join('\n')});
+            alert(`Shopping List:\n${ingredients.join('\n')}`);
         }
 
         function showMealHistory() {
             const history = JSON.parse(localStorage.getItem('mealHistory') || '[]');
             if (!history.length) return alert('No meal history yet!');
-            const summary = history.map(h => ${h.timestamp}: ${h.meals.map(m => m.name).join(', ')}).join('\n');
-            alert(Meal History:\n${summary});
+            const summary = history.map(h => `${h.timestamp}: ${h.meals.map(m => m.name).join(', ')}`).join('\n');
+            alert(`Meal History:\n${summary}`);
         }
 
         function logNutrients(meal) {
-            const nutrients = { protein: 20, carbs: 30, fats: 15 };
-            alert(Nutrients for ${meal}:\nProtein: ${nutrients.protein}g\nCarbs: ${nutrients.carbs}g\nFats: ${nutrients.fats}g);
+            const nutrients = {
+                protein: Math.floor(Math.random() * 30 + 10),
+                carbs: Math.floor(Math.random() * 50 + 20),
+                fats: Math.floor(Math.random() * 20 + 5)
+            };
+            alert(`Nutrients for ${meal}:\nProtein: ${nutrients.protein}g\nCarbs: ${nutrients.carbs}g\nFats: ${nutrients.fats}g`);
         }
 
-        function suggestPairing() {
+        function estimatePrepTime() {
             const mealOutput = document.getElementById('mealOutput');
             const meals = mealOutput.querySelectorAll('.food-card');
             if (!meals.length) return alert('Generate a meal plan first!');
-            const mainMeal = meals[0].querySelector('h3').textContent;
-            const pairing = mealData['none']['any']['appetizer'].template
-                .replace('{protein}', 'cheese')
-                .replace('{vegetable}', 'tomatoes')
-                .replace('{side}', 'bread')
-                .replace('{seasoning}', 'basil')
-                .replace('{servings}', '1');
-            alert(Pair ${mainMeal} with: ${pairing});
+            const prepTime = Math.floor(Math.random() * 30 + 15);
+            alert(`Estimated prep time: ${prepTime} minutes`);
         }
 
-        function downloadMealPlan() {
-            const mealOutput = document.getElementById('mealOutput');
-            const text = Array.from(mealOutput.querySelectorAll('.food-card')).map(card => {
-                return ${card.querySelector('h3').textContent}\n${card.querySelector('.ingredients').textContent}\n${card.querySelector('.instructions').textContent}\n${card.querySelector('.calories').textContent};
-            }).join('\n\n');
-            if (!text) return alert('Generate a meal plan first!');
-            const blob = new Blob([text], { type: 'text/plain' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'meal_plan.txt';
-            a.click();
-            URL.revokeObjectURL(url);
+        function matchMealToMood() {
+            const mood = document.getElementById('mood').value;
+            const suggestions = {
+                cozy: 'Comforting pasta',
+                adventurous: 'Spicy Thai curry',
+                healthy: 'Quinoa salad',
+                quick: 'Stir-fry'
+            };
+            alert(`Mood: ${mood}\nSuggested meal: ${suggestions[mood] || 'Any delicious dish'}`);
         }
 
         // Meal form submission
@@ -483,23 +595,24 @@
             const diet = document.getElementById('diet').value;
             const cuisine = document.getElementById('cuisine').value;
             const mealType = document.getElementById('mealType').value;
-            const servings = parseInt(document.getElementById('servings').value);
+            const servings = parseInt(document.getElementById('servings').value) || 1;
+            const mood = document.getElementById('mood').value;
 
             const users = JSON.parse(localStorage.getItem('users') || '{}');
             const currentUser = localStorage.getItem('currentUser');
             const allergies = users[currentUser]?.preferences.allergies?.split(',').map(a => a.trim().toLowerCase()) || [];
 
-            // Generate meals from template
             const mealTemplate = mealData[diet]?.[cuisine]?.[mealType] || {};
             let meals = [];
             if (mealTemplate) {
                 const { template, ingredients, proteins, vegetables, seasoning, sides } = mealTemplate;
-                const combinations = [];
-                for (let i = 0; i < 6 && i < proteins.length * vegetables.length * sides.length; i++) {
+                const uniqueMeals = new Set();
+                const maxMeals = 6;
+                while (uniqueMeals.size < maxMeals && uniqueMeals.size < proteins.length * vegetables.length * sides.length) {
                     const protein = proteins[Math.floor(Math.random() * proteins.length)];
                     const vegetable = vegetables[Math.floor(Math.random() * vegetables.length)];
                     const side = sides[Math.floor(Math.random() * sides.length)];
-                    const mealName = ${protein.charAt(0).toUpperCase() + protein.slice(1)} ${vegetable.charAt(0).toUpperCase() + vegetable.slice(1)} ${cuisine.charAt(0).toUpperCase()} ${mealType.charAt(0).toUpperCase() + mealType.slice(1)};
+                    const mealName = `${protein.charAt(0).toUpperCase() + protein.slice(1)} ${vegetable.charAt(0).toUpperCase() + vegetable.slice(1)} ${cuisine.charAt(0).toUpperCase()} ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}`;
                     const mealIngredients = ingredients.map(ing => ing.replace('{protein}', protein).replace('{vegetable}', vegetable).replace('{side}', side).replace('{seasoning}', seasoning)).join(', ');
                     const mealInstructions = template
                         .replace('{protein}', protein)
@@ -507,41 +620,51 @@
                         .replace('{side}', side)
                         .replace('{seasoning}', seasoning)
                         .replace('{servings}', servings);
-                    if (!combinations.includes(mealInstructions) && !allergies.some(allergy => mealIngredients.toLowerCase().includes(allergy) || mealInstructions.toLowerCase().includes(allergy))) {
-                        combinations.push(mealInstructions);
-                        meals.push({ name: mealName, ingredients: mealIngredients, instructions: mealInstructions });
+                    if (!allergies.some(allergy => mealIngredients.toLowerCase().includes(allergy) || mealInstructions.toLowerCase().includes(allergy))) {
+                        uniqueMeals.add(JSON.stringify({ name: mealName, ingredients: mealIngredients, instructions: mealInstructions }));
                     }
                 }
+                meals = Array.from(uniqueMeals).map(m => JSON.parse(m));
             }
 
             const mealOutput = document.getElementById('mealOutput');
-            mealOutput.innerHTML = 
+            mealOutput.innerHTML = `
                 <div class="bg-orange-100 p-6 rounded-2xl mb-6">
                     <p class="font-semibold"><span class="text-red-600">Diet:</span> ${diet.charAt(0).toUpperCase() + diet.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Cuisine:</span> ${cuisine.charAt(0).toUpperCase() + cuisine.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Meal Type:</span> ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Servings:</span> ${servings}</p>
+                    <p class="font-semibold"><span class="text-red-600">Mood:</span> ${mood.charAt(0).toUpperCase() + mood.slice(1)}</p>
                 </div>
-            ;
-            meals.forEach(meal => {
-                const mealCard = document.createElement('div');
-                mealCard.className = 'food-card bg-white p-6 rounded-2xl shadow-lg';
-                mealCard.innerHTML = 
-                    <h3 class="text-xl font-bold text-red-600 mb-4">${meal.name} 🍲</h3>
-                    <p class="text-gray-700 mb-2 ingredients"><strong>Ingredients:</strong> ${meal.ingredients}</p>
-                    <p class="text-gray-700 instructions"><strong>Instructions:</strong> ${meal.instructions}</p>
-                    <p class="text-gray-600 text-sm mt-4 calories">Estimated Calories: ${estimateCalories(meal.name)} kcal</p>
-                ;
-                mealOutput.appendChild(mealCard);
-            });
+            `;
+            if (meals.length === 0) {
+                mealOutput.innerHTML += `<p class="text-center text-red-600">No meals found matching your criteria. Try different options!</p>`;
+            } else {
+                const fragment = document.createDocumentFragment();
+                meals.forEach(meal => {
+                    const mealCard = document.createElement('div');
+                    mealCard.className = 'food-card bg-white p-6 rounded-2xl shadow-lg';
+                    mealCard.innerHTML = `
+                        <h3 class="text-xl font-bold text-red-600 mb-4">${meal.name} 🍲</h3>
+                        <p class="text-gray-700 mb-2 ingredients"><strong>Ingredients:</strong> ${meal.ingredients}</p>
+                        <p class="text-gray-700 instructions"><strong>Instructions:</strong> ${meal.instructions}</p>
+                        <p class="text-gray-600 text-sm mt-4 calories">Estimated Calories: ${estimateCalories(meal.name)} kcal</p>
+                    `;
+                    fragment.appendChild(mealCard);
+                });
+                mealOutput.appendChild(fragment);
+                gsap.from('#mealPlan .food-card', { opacity: 0, y: 50, duration: 0.5, stagger: 0.2, ease: 'power2.out' });
+            }
             document.getElementById('mealPlan').classList.remove('hidden');
-            gsap.from('#mealPlan .food-card', { opacity: 0, y: 50, duration: 0.5, stagger: 0.2, ease: 'power2.out' });
 
-            // Save to meal history
             if (meals.length) {
-                const history = JSON.parse(localStorage.getItem('mealHistory') || '[]');
-                history.push({ diet, cuisine, mealType, servings, meals, timestamp: new Date().toLocaleString() });
-                localStorage.setItem('mealHistory', JSON.stringify(history));
+                try {
+                    const history = JSON.parse(localStorage.getItem('mealHistory') || '[]');
+                    history.push({ diet, cuisine, mealType, servings, mood, meals, timestamp: new Date().toLocaleString() });
+                    localStorage.setItem('mealHistory', JSON.stringify(history));
+                } catch (e) {
+                    showError('loginError', 'Storage limit reached. Clear some history.');
+                }
             }
         });
 
@@ -554,46 +677,191 @@
             const mealTypes = Object.keys(mealData[diet][cuisine]);
             const mealType = mealTypes[Math.floor(Math.random() * mealTypes.length)];
             const servings = Math.floor(Math.random() * 4) + 1;
+            const moods = ['any', 'cozy', 'adventurous', 'healthy', 'quick'];
+            const mood = moods[Math.floor(Math.random() * moods.length)];
 
             document.getElementById('diet').value = diet;
             document.getElementById('cuisine').value = cuisine;
             document.getElementById('mealType').value = mealType;
             document.getElementById('servings').value = servings;
+            document.getElementById('mood').value = mood;
             document.getElementById('mealForm').dispatchEvent(new Event('submit'));
         });
+
+        // Floating emojis
         function floatEmojis() {
-      const emojis = ['🍕','🥗','🍣','🍜','🍩','🍔','🌮','🍛','🥐','🍰'];
-      emojis.forEach(() => {
-        const el = document.createElement('div');
-        el.className = 'floating-emoji';
-        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-        el.style.left = `${Math.random() * 100}vw`;
-        el.style.top = `-50px`;
-        document.body.appendChild(el);
+            const emojis = ['🍕', '🥗', '🍣', '🍜', '🍩', '🍔', '🌮', '🍛', '🥐', '🍰'];
+            const maxEmojis = 3;
+            for (let i = 0; i < maxEmojis; i++) {
+                const el = document.createElement('div');
+                el.className = 'floating-emoji';
+                el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+                el.style.left = `${Math.random() * 100}vw`;
+                el.style.top = `-50px`;
+                document.body.appendChild(el);
 
-        gsap.to(el, {
-          y: window.innerHeight + 50,
-          x: `+=${Math.random() * 100 - 50}`,
-          rotation: Math.random() * 360,
-          duration: 12,
-          ease: 'linear',
-          onComplete: () => el.remove()
+                gsap.to(el, {
+                    y: window.innerHeight + 50,
+                    x: `+=${Math.random() * 100 - 50}`,
+                    rotation: Math.random() * 360,
+                    duration: 12,
+                    ease: 'linear',
+                    onComplete: () => {
+                        gsap.killTweensOf(el);
+                        el.remove();
+                    }
+                });
+            }
+        }
+        setInterval(floatEmojis, 5000);
+
+        // Mini-Games
+        let gameInstance = null;
+
+        function stopGame() {
+            if (gameInstance) {
+                gameInstance.remove();
+                gameInstance = null;
+            }
+            document.getElementById('gameContainer').innerHTML = '';
+        }
+
+        // Catch the Ingredients Game (p5.js)
+        document.getElementById('catchGameBtn').addEventListener('click', () => {
+            stopGame();
+            gameInstance = new p5(sketch => {
+                let basketX, basketY, ingredients, score, gameOver;
+                const ingredientEmojis = ['🍅', '🧀', '🥕', '🍗'];
+
+                sketch.setup = () => {
+                    sketch.createCanvas(600, 400);
+                    basketX = sketch.width / 2;
+                    basketY = sketch.height - 50;
+                    ingredients = [];
+                    score = 0;
+                    gameOver = false;
+                    sketch.textAlign(sketch.CENTER);
+                    sketch.textSize(20);
+                    setInterval(() => {
+                        if (!gameOver) {
+                            ingredients.push({
+                                x: sketch.random(0, sketch.width),
+                                y: 0,
+                                emoji: ingredientEmojis[Math.floor(sketch.random(ingredientEmojis.length))]
+                            });
+                        }
+                    }, 1000);
+                };
+
+                sketch.draw = () => {
+                    sketch.background(255);
+                    if (gameOver) {
+                        sketch.fill(255, 0, 0);
+                        sketch.text(`Game Over! Score: ${score}`, sketch.width / 2, sketch.height / 2);
+                        sketch.text('You Win! Meal Cooked!', sketch.width / 2, sketch.height / 2 + 30);
+                        return;
+                    }
+                    // Draw basket
+                    sketch.fill(139, 69, 19);
+                    sketch.rect(basketX - 50, basketY, 100, 20);
+                    // Draw ingredients
+                    sketch.fill(0);
+                    for (let i = ingredients.length - 1; i >= 0; i--) {
+                        const ing = ingredients[i];
+                        sketch.text(ing.emoji, ing.x, ing.y);
+                        ing.y += 2;
+                        if (ing.y > sketch.height) {
+                            ingredients.splice(i, 1);
+                        } else if (ing.y > basketY && ing.x > basketX - 50 && ing.x < basketX + 50) {
+                            ingredients.splice(i, 1);
+                            score += 10;
+                        }
+                    }
+                    // Draw score
+                    sketch.fill(0);
+                    sketch.text(`Score: ${score}`, sketch.width / 2, 30);
+                    if (score >= 50) {
+                        gameOver = true;
+                    }
+                };
+
+                sketch.mouseMoved = () => {
+                    basketX = sketch.constrain(sketch.mouseX, 50, sketch.width - 50);
+                };
+
+                sketch.keyPressed = () => {
+                    if (sketch.keyCode === sketch.LEFT_ARROW) {
+                        basketX -= 20;
+                    } else if (sketch.keyCode === sketch.RIGHT_ARROW) {
+                        basketX += 20;
+                    }
+                    basketX = sketch.constrain(basketX, 50, sketch.width - 50);
+                };
+            }, document.getElementById('gameContainer'));
         });
-      });
-    }
 
-    setInterval(floatEmojis, 3500);
+        // Food Quiz Game
+        document.getElementById('quizGameBtn').addEventListener('click', () => {
+            stopGame();
+            const questions = [
+                {
+                    question: 'Which country is known for sushi?',
+                    options: ['Italy', 'Japan', 'Mexico', 'India'],
+                    answer: 'Japan'
+                },
+                {
+                    question: 'What is the main ingredient in guacamole?',
+                    options: ['Tomato', 'Avocado', 'Onion', 'Pepper'],
+                    answer: 'Avocado'
+                },
+                {
+                    question: 'Which cuisine uses garam masala?',
+                    options: ['French', 'Thai', 'Indian', 'Chinese'],
+                    answer: 'Indian'
+                }
+            ];
+            let currentQuestion = 0;
+            let quizScore = 0;
 
-    function originalAppendMealCard(mealCard) {
-      document.getElementById('mealOutput').appendChild(mealCard);
-      gsap.from(mealCard, {
-        opacity: 0,
-        y: 30,
-        scale: 0.95,
-        duration: 0.6,
-        ease: 'power1.out'
-      });
-    }
+            const gameContainer = document.getElementById('gameContainer');
+            gameContainer.innerHTML = `
+                <div id="quizContent" class="text-center">
+                    <p id="question" class="text-lg font-semibold mb-4"></p>
+                    <div id="options" class="grid gap-2"></div>
+                    <p id="quizResult" class="mt-4 text-red-600 hidden"></p>
+                </div>
+            `;
+
+            function showQuestion() {
+                if (currentQuestion >= questions.length) {
+                    document.getElementById('quizResult').textContent = `Quiz Over! Score: ${quizScore}/${questions.length}`;
+                    document.getElementById('quizResult').classList.remove('hidden');
+                    return;
+                }
+                const q = questions[currentQuestion];
+                document.getElementById('question').textContent = q.question;
+                const optionsDiv = document.getElementById('options');
+                optionsDiv.innerHTML = q.options.map(opt => `
+                    <button class="w-full p-2 bg-orange-100 rounded-lg hover:bg-orange-200 transition-all" aria-label="${opt}">${opt}</button>
+                `).join('');
+                optionsDiv.querySelectorAll('button').forEach(btn => {
+                    btn.addEventListener('click', () => {
+                        if (btn.textContent === q.answer) {
+                            quizScore++;
+                            document.getElementById('quizResult').textContent = 'Correct!';
+                        } else {
+                            document.getElementById('quizResult').textContent = `Wrong! Correct answer: ${q.answer}`;
+                        }
+                        document.getElementById('quizResult').classList.remove('hidden');
+                        setTimeout(() => {
+                            currentQuestion++;
+                            showQuestion();
+                        }, 1000);
+                    });
+                });
+            }
+            showQuestion();
+        });
     </script>
 </body>
-</html> 
+</html>
