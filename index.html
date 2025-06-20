@@ -6,40 +6,52 @@
     <title>🍽️ AI Meal Planner</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <style>
-        body {
-            background: linear-gradient(to bottom, #fef3e2, #f7c6a6);
-        }
-        .food-card {
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .food-card:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-        }
-        .modal-bg {
-            backdrop-filter: blur(5px);
-        }
-        input:focus, select:focus {
-            outline: none;
-            box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
-        }
-        body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background: url('https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif') center center / cover no-repeat;
-    opacity: 0.08;
-    z-index: -1;
-    animation: slowFade 20s infinite alternate;
-}
+<style>
+    body {
+      background: linear-gradient(to bottom, #fef3e2, #f7c6a6);
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-@keyframes slowFade {
-    0% { opacity: 0.08; }
-    100% { opacity: 0.12; }
-}
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url('https://media.giphy.com/media/3o7TKMt1VVNkHV2PaE/giphy.gif') center center / cover no-repeat;
+      opacity: 0.08;
+      z-index: -1;
+      animation: slowFade 20s infinite alternate;
+    }
 
-    </style>
+    @keyframes slowFade {
+      0% { opacity: 0.08; }
+      100% { opacity: 0.12; }
+    }
+
+    .food-card {
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .food-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-bg {
+      backdrop-filter: blur(5px);
+    }
+
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 10px rgba(239, 68, 68, 0.5);
+    }
+
+    .floating-emoji {
+      position: fixed;
+      font-size: 1.75rem;
+      z-index: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
 <body class="font-sans min-h-screen">
     <!-- Navigation -->
@@ -204,7 +216,7 @@
         function updateCuisineOptions() {
             const cuisineSelect = document.getElementById('cuisine');
             const cuisines = Object.keys(mealData[Object.keys(mealData)[0]] || {});
-            cuisineSelect.innerHTML = cuisines.map(c => `<option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>`).join('');
+            cuisineSelect.innerHTML = cuisines.map(c => <option value="${c}">${c.charAt(0).toUpperCase() + c.slice(1)}</option>).join('');
         }
 
         // Modal controls
@@ -291,7 +303,7 @@
             const logoutLink = document.getElementById('logoutLink');
             if (currentUser) {
                 const users = JSON.parse(localStorage.getItem('users') || '{}');
-                userGreeting.textContent = `Hello, ${currentUser}! 👋`;
+                userGreeting.textContent = Hello, ${currentUser}! 👋;
                 loginLink.classList.add('hidden');
                 registerLink.classList.add('hidden');
                 logoutLink.classList.remove('hidden');
@@ -319,35 +331,6 @@
 
         // GSAP animations for heading
         gsap.from('h2', { opacity: 0, y: -50, duration: 1, ease: 'bounce.out', stagger: 0.2 });
-gsap.from(mealCard, {
-    opacity: 0,
-    y: 20,
-    scale: 0.95,
-    duration: 0.6,
-    ease: "power1.out"
-});
-function floatEmojis() {
-    const foodEmojis = ['🍕', '🍔', '🍣', '🥗', '🍜', '🥘', '🍩'];
-    foodEmojis.forEach((emoji, index) => {
-        const el = document.createElement('div');
-        el.textContent = emoji;
-        el.className = 'text-3xl fixed z-0 pointer-events-none';
-        el.style.left = `${Math.random() * 100}%`;
-        el.style.top = `-50px`;
-        document.body.appendChild(el);
-
-        gsap.to(el, {
-            y: window.innerHeight + 50,
-            x: `+=${Math.random() * 100 - 50}`,
-            rotation: Math.random() * 360,
-            duration: Math.random() * 10 + 10,
-            ease: 'linear',
-            onComplete: () => el.remove()
-        });
-    });
-}
-
-setInterval(floatEmojis, 3000);
 
         // Practical AI Features (all functional)
         const aiFeatures = [
@@ -422,12 +405,12 @@ setInterval(floatEmojis, 3000);
         const aiFeaturesList = document.getElementById('aiFeaturesList');
         aiFeatures.forEach(feature => {
             const li = document.createElement('li');
-            li.innerHTML = `
+            li.innerHTML = 
                 <button class="w-full text-left p-4 bg-orange-100 rounded-lg hover:bg-orange-200 transition-all flex justify-between items-center">
                     <span><strong>${feature.name}</strong>: ${feature.desc}</span>
                     <span>${feature.active ? '✅' : '🔜'}</span>
                 </button>
-            `;
+            ;
             li.querySelector('button').addEventListener('click', feature.action);
             aiFeaturesList.appendChild(li);
         });
@@ -437,7 +420,7 @@ setInterval(floatEmojis, 3000);
         // AI Feature Functions
         function estimateCalories(meal) {
             const calories = Math.floor(Math.random() * 500 + 300);
-            alert(`Estimated calories for ${meal}: ${calories} kcal`);
+            alert(Estimated calories for ${meal}: ${calories} kcal);
             return calories;
         }
 
@@ -450,19 +433,19 @@ setInterval(floatEmojis, 3000);
                 const ing = meal.querySelector('.ingredients').textContent.replace('Ingredients: ', '');
                 ingredients.push(ing);
             });
-            alert(`Shopping List:\n${ingredients.join('\n')}`);
+            alert(Shopping List:\n${ingredients.join('\n')});
         }
 
         function showMealHistory() {
             const history = JSON.parse(localStorage.getItem('mealHistory') || '[]');
             if (!history.length) return alert('No meal history yet!');
-            const summary = history.map(h => `${h.timestamp}: ${h.meals.map(m => m.name).join(', ')}`).join('\n');
-            alert(`Meal History:\n${summary}`);
+            const summary = history.map(h => ${h.timestamp}: ${h.meals.map(m => m.name).join(', ')}).join('\n');
+            alert(Meal History:\n${summary});
         }
 
         function logNutrients(meal) {
             const nutrients = { protein: 20, carbs: 30, fats: 15 };
-            alert(`Nutrients for ${meal}:\nProtein: ${nutrients.protein}g\nCarbs: ${nutrients.carbs}g\nFats: ${nutrients.fats}g`);
+            alert(Nutrients for ${meal}:\nProtein: ${nutrients.protein}g\nCarbs: ${nutrients.carbs}g\nFats: ${nutrients.fats}g);
         }
 
         function suggestPairing() {
@@ -476,13 +459,13 @@ setInterval(floatEmojis, 3000);
                 .replace('{side}', 'bread')
                 .replace('{seasoning}', 'basil')
                 .replace('{servings}', '1');
-            alert(`Pair ${mainMeal} with: ${pairing}`);
+            alert(Pair ${mainMeal} with: ${pairing});
         }
 
         function downloadMealPlan() {
             const mealOutput = document.getElementById('mealOutput');
             const text = Array.from(mealOutput.querySelectorAll('.food-card')).map(card => {
-                return `${card.querySelector('h3').textContent}\n${card.querySelector('.ingredients').textContent}\n${card.querySelector('.instructions').textContent}\n${card.querySelector('.calories').textContent}`;
+                return ${card.querySelector('h3').textContent}\n${card.querySelector('.ingredients').textContent}\n${card.querySelector('.instructions').textContent}\n${card.querySelector('.calories').textContent};
             }).join('\n\n');
             if (!text) return alert('Generate a meal plan first!');
             const blob = new Blob([text], { type: 'text/plain' });
@@ -516,7 +499,7 @@ setInterval(floatEmojis, 3000);
                     const protein = proteins[Math.floor(Math.random() * proteins.length)];
                     const vegetable = vegetables[Math.floor(Math.random() * vegetables.length)];
                     const side = sides[Math.floor(Math.random() * sides.length)];
-                    const mealName = `${protein.charAt(0).toUpperCase() + protein.slice(1)} ${vegetable.charAt(0).toUpperCase() + vegetable.slice(1)} ${cuisine.charAt(0).toUpperCase()} ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}`;
+                    const mealName = ${protein.charAt(0).toUpperCase() + protein.slice(1)} ${vegetable.charAt(0).toUpperCase() + vegetable.slice(1)} ${cuisine.charAt(0).toUpperCase()} ${mealType.charAt(0).toUpperCase() + mealType.slice(1)};
                     const mealIngredients = ingredients.map(ing => ing.replace('{protein}', protein).replace('{vegetable}', vegetable).replace('{side}', side).replace('{seasoning}', seasoning)).join(', ');
                     const mealInstructions = template
                         .replace('{protein}', protein)
@@ -532,23 +515,23 @@ setInterval(floatEmojis, 3000);
             }
 
             const mealOutput = document.getElementById('mealOutput');
-            mealOutput.innerHTML = `
+            mealOutput.innerHTML = 
                 <div class="bg-orange-100 p-6 rounded-2xl mb-6">
                     <p class="font-semibold"><span class="text-red-600">Diet:</span> ${diet.charAt(0).toUpperCase() + diet.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Cuisine:</span> ${cuisine.charAt(0).toUpperCase() + cuisine.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Meal Type:</span> ${mealType.charAt(0).toUpperCase() + mealType.slice(1)}</p>
                     <p class="font-semibold"><span class="text-red-600">Servings:</span> ${servings}</p>
                 </div>
-            `;
+            ;
             meals.forEach(meal => {
                 const mealCard = document.createElement('div');
                 mealCard.className = 'food-card bg-white p-6 rounded-2xl shadow-lg';
-                mealCard.innerHTML = `
+                mealCard.innerHTML = 
                     <h3 class="text-xl font-bold text-red-600 mb-4">${meal.name} 🍲</h3>
                     <p class="text-gray-700 mb-2 ingredients"><strong>Ingredients:</strong> ${meal.ingredients}</p>
                     <p class="text-gray-700 instructions"><strong>Instructions:</strong> ${meal.instructions}</p>
                     <p class="text-gray-600 text-sm mt-4 calories">Estimated Calories: ${estimateCalories(meal.name)} kcal</p>
-                `;
+                ;
                 mealOutput.appendChild(mealCard);
             });
             document.getElementById('mealPlan').classList.remove('hidden');
@@ -578,6 +561,39 @@ setInterval(floatEmojis, 3000);
             document.getElementById('servings').value = servings;
             document.getElementById('mealForm').dispatchEvent(new Event('submit'));
         });
+        function floatEmojis() {
+      const emojis = ['🍕','🥗','🍣','🍜','🍩','🍔','🌮','🍛','🥐','🍰'];
+      emojis.forEach(() => {
+        const el = document.createElement('div');
+        el.className = 'floating-emoji';
+        el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+        el.style.left = `${Math.random() * 100}vw`;
+        el.style.top = `-50px`;
+        document.body.appendChild(el);
+
+        gsap.to(el, {
+          y: window.innerHeight + 50,
+          x: `+=${Math.random() * 100 - 50}`,
+          rotation: Math.random() * 360,
+          duration: 12,
+          ease: 'linear',
+          onComplete: () => el.remove()
+        });
+      });
+    }
+
+    setInterval(floatEmojis, 3500);
+
+    function originalAppendMealCard(mealCard) {
+      document.getElementById('mealOutput').appendChild(mealCard);
+      gsap.from(mealCard, {
+        opacity: 0,
+        y: 30,
+        scale: 0.95,
+        duration: 0.6,
+        ease: 'power1.out'
+      });
+    }
     </script>
 </body>
-</html>
+</html> . 
